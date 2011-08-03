@@ -6,11 +6,11 @@ case "$1" in
   if [ -z "${RBENV_VERSION}" ]; then
     echo "you must specify an installed version to associate the gemset with" >&2
     echo "available versions are:"
-    rbenv-versions
+    rbenv versions
     exit 1
   fi
 
-  rbenv-path "${RBENV_VERSION}" > /dev/null # make sure the provided version exists
+  rbenv prefix "${RBENV_VERSION}" > /dev/null # make sure the provided version exists
     
   RBENV_GEMSET="$3"
   if [ -z "${RBENV_GEMSET}" ]; then
@@ -18,7 +18,7 @@ case "$1" in
     exit 1
   fi
 
-  RBENV_GEMSET_PATH="$(rbenv-path "${RBENV_VERSION}")/gemsets/${RBENV_GEMSET}"
+  RBENV_GEMSET_PATH="$(rbenv prefix "${RBENV_VERSION}")/gemsets/${RBENV_GEMSET}"
 
   mkdir -p "${RBENV_GEMSET_PATH}"
   echo "created ${RBENV_GEMSET} for ${RBENV_VERSION}"
@@ -32,7 +32,7 @@ case "$1" in
     exit 1
   fi
 
-  rm -rf "$(rbenv-path "${RBENV_VERSION}")/gemsets/${RBENV_GEMSET}"
+  rm -rf "$(rbenv prefix "${RBENV_VERSION}")/gemsets/${RBENV_GEMSET}"
   echo "deleted ${RBENV_GEMSET} from ${RBENV_VERSION}"
   ;;
 
@@ -63,7 +63,7 @@ unset GEM_HOME GEM_PATH
 RBENV_GEMSET_FILE="$(find_gemset_file || true)"
 
 if [ -n "$RBENV_GEMSET_FILE" ]; then
-  RBENV_GEMSET_ROOT="$(rbenv-path)/gemsets"
+  RBENV_GEMSET_ROOT="$(rbenv prefix)/gemsets"
   for gemset in `cat "$RBENV_GEMSET_FILE"`
   do
     path="${RBENV_GEMSET_ROOT}/${gemset}"
