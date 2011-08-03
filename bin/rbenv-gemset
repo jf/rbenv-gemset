@@ -36,6 +36,21 @@ case "$1" in
   echo "deleted ${RBENV_GEMSET} from ${RBENV_VERSION}"
   ;;
 
+"list")
+  for version in $(rbenv versions --bare); do
+    shopt -s nullglob
+    gemsets=($(rbenv prefix $version)/gemsets/*)
+    shopt -u nullglob
+
+    if [ -n "$gemsets" ]; then
+      echo "$version:"
+      for gemset in $gemsets; do
+        echo "  `basename $gemset`"
+      done
+    fi
+  done
+  ;;
+
 "install")
   if [ "$2" == "-g" ]; then
     RBENV_PLUGIN_ROOT=/tmp/rbenv.d
@@ -139,6 +154,7 @@ PLUGIN
   echo "possible commands are:" >&2
   echo "  create [version] [gemset]" >&2
   echo "  delete [version] [gemset]" >&2
+  echo "  list" >&2
   echo "  install [-g]" >&2
   echo "  uninstall [-g]" >&2
   exit 1
