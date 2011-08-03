@@ -118,10 +118,29 @@ PLUGIN
   echo "rbenv-gemset plugin installed"
   ;;
 
+"uninstall")
+  if [ "$2" == "-g" ]; then
+    RBENV_PLUGIN_ROOT=/tmp/rbenv.d
+  else
+    RBENV_PLUGIN_ROOT="${HOME}/.rbenv/rbenv.d"
+  fi
+
+  rm -f "${RBENV_PLUGIN_ROOT}/exec/gemset.bash"
+  rm -f "${RBENV_PLUGIN_ROOT}/rehash/gemset.bash"
+  rm -f "${RBENV_PLUGIN_ROOT}/util/gemset.bash"
+  rm -f "${RBENV_PLUGIN_ROOT}/which/gemset.bash"
+
+  echo "rbenv-gemset plugin uninstalled"
+  ;;
+
 *)
-  echo "$0 create [version] [gemset]" >&2
-  echo "$0 delete [version] [gemset]" >&2
-  echo "$0 install [-g]" >&2
+  echo "`basename $0` [command] [options]" >&2
+  echo >&2
+  echo "possible commands are:" >&2
+  echo "  create [version] [gemset]" >&2
+  echo "  delete [version] [gemset]" >&2
+  echo "  install [-g]" >&2
+  echo "  uninstall [-g]" >&2
   exit 1
   ;;
 esac
