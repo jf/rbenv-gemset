@@ -127,7 +127,11 @@ fi
 PLUGIN
 
   cat > "${RBENV_PLUGIN_ROOT}/rehash/gemset.bash" <<-PLUGIN
-make_shims ${HOME}/.rbenv/versions/*/gemsets/*/bin/*
+shopt -s nullglob
+gemset_bin=(${HOME}/.rbenv/versions/*/gemsets/*/bin/*)
+shopt -s nullglob
+
+make_shims ${gemset_bin[@]}
 PLUGIN
 
   echo "rbenv-gemset plugin installed"
