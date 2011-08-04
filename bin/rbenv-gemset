@@ -45,7 +45,7 @@ case "$1" in
     if [ -n "$gemsets" ]; then
       echo "$version:"
       for gemset in ${gemsets[@]}; do
-        echo "  `basename $gemset`"
+        echo "  ${gemset##*/}"
       done
     fi
   done
@@ -153,7 +153,7 @@ PLUGIN
   ;;
 
 *)
-  echo "`basename $0` [command] [options]" >&2
+  echo "${0##*/} [command] [options]" >&2
   echo >&2
   echo "possible commands are:" >&2
   echo "  create [version] [gemset]" >&2
