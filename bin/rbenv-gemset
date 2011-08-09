@@ -28,7 +28,7 @@ case "$1" in
   RBENV_VERSION="$2"
   RBENV_GEMSET="$3"
   if [[ -z "${RBENV_VERSION}" || -z "${RBENV_GEMSET}" ]]; then
-    echo "you must specify a version and it's associated gemset" >&2
+    echo "you must specify a version and its associated gemset" >&2
     exit 1
   fi
 
