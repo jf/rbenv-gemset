@@ -1,5 +1,7 @@
 #!/usr/bin/env bash -e
 
+RBENV_GEMSET_VERSION="0.1.0"
+
 case "$1" in
 "create")
   RBENV_VERSION="$2"
@@ -152,7 +154,14 @@ PLUGIN
   echo "rbenv-gemset plugin uninstalled"
   ;;
 
+"version")
+  echo "rbenv-gemset ${RBENV_GEMSET_VERSION}"
+  echo "by Jamis Buck <jamis@jamisbuck.org>"
+  echo "http://github.com/jamis/rbenv-gemset"
+  ;;
+
 *)
+  echo "version ${RBENV_GEMSET_VERSION}" >&2
   echo "${0##*/} [command] [options]" >&2
   echo >&2
   echo "possible commands are:" >&2
@@ -161,6 +170,6 @@ PLUGIN
   echo "  list" >&2
   echo "  install [-g]" >&2
   echo "  uninstall [-g]" >&2
-  exit 1
+  echo "  version" >&2
   ;;
 esac
