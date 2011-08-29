@@ -56,6 +56,8 @@ case "$1" in
 "install")
   if [ "$2" == "-g" ]; then
     RBENV_PLUGIN_ROOT=/tmp/rbenv.d
+  elif [ -n $DESTDIR ]; then
+    RBENV_PLUGIN_ROOT=${DESTDIR}
   else
     RBENV_PLUGIN_ROOT="${HOME}/.rbenv/rbenv.d"
   fi
