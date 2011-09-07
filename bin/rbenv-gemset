@@ -4,6 +4,25 @@ set -e
 RBENV_GEMSET_VERSION="0.1.0"
 
 case "$1" in
+"active")
+  if [ -e "/etc/rbenv.d/util/gemset.bash" ]; then
+    source "/etc/rbenv.d/util/gemset.bash"
+  elif [ -e "${HOME}/.rbenv/rbenv.d/util/gemset.bash" ]; then
+    source "${HOME}/.rbenv/rbenv.d/util/gemset.bash"
+  else
+    echo "unable to find gemset plugin in /etc/rbenv.d or ${HOME}/.rbenv/rbenv.d" >&2
+    exit 1
+  fi
+
+  if [ -n "$(active_gemsets)" ]; then
+    for gemset in $(active_gemsets); do
+      echo "${gemset}"
+    done
+  else
+    echo "no active gemsets" >&2
+  fi
+  ;;
+
 "create")
   RBENV_VERSION="$2"
   if [ -z "${RBENV_VERSION}" ]; then
