@@ -187,6 +187,7 @@ PLUGIN
   echo "${0##*/} [command] [options]" >&2
   echo >&2
   echo "possible commands are:" >&2
+  echo "  active" >&2
   echo "  create [version] [gemset]" >&2
   echo "  delete [version] [gemset]" >&2
   echo "  list" >&2
