@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-RBENV_GEMSET_VERSION="0.1.0"
+RBENV_GEMSET_VERSION="0.2.0"
 
 case "$1" in
 "active")
