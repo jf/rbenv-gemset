@@ -82,6 +82,8 @@ case "$1" in
     RBENV_PLUGIN_ROOT="${HOME}/.rbenv/rbenv.d"
   fi
 
+  RBENV_GEMSET_SYSTEM_ROOT="/usr/local/share/ruby-gemsets"
+
   mkdir -p "${RBENV_PLUGIN_ROOT}/exec"
   mkdir -p "${RBENV_PLUGIN_ROOT}/rehash"
   mkdir -p "${RBENV_PLUGIN_ROOT}/util"
@@ -118,7 +120,12 @@ source "${RBENV_PLUGIN_ROOT}/util/gemset.bash"
 
 unset GEM_HOME GEM_PATH
 
-RBENV_GEMSET_ROOT="\$(rbenv prefix)/gemsets"
+if [ "\$(rbenv-version-name)" = "system" ]; then
+  RBENV_GEMSET_ROOT="$RBENV_GEMSET_SYSTEM_ROOT"
+else
+  RBENV_GEMSET_ROOT="\$(rbenv prefix)/gemsets"
+fi
+
 for gemset in \$(active_gemsets)
 do
   path="\${RBENV_GEMSET_ROOT}/\${gemset}"
@@ -138,7 +145,12 @@ PLUGIN
   cat > "${RBENV_PLUGIN_ROOT}/which/gemset.bash" <<-PLUGIN
 source "${RBENV_PLUGIN_ROOT}/util/gemset.bash"
 
-RBENV_GEMSET_ROOT="\$(rbenv prefix)/gemsets"
+if [ "\$(rbenv-version-name)" = "system" ]; then
+  RBENV_GEMSET_ROOT="$RBENV_GEMSET_SYSTEM_ROOT"
+else
+  RBENV_GEMSET_ROOT="\$(rbenv prefix)/gemsets"
+fi
+
 if [ ! -x "\$RBENV_COMMAND_PATH" ]; then
   for gemset in \$(active_gemsets); do
     command="\${RBENV_GEMSET_ROOT}/\${gemset}/bin/\$RBENV_COMMAND"
