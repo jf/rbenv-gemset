@@ -3,6 +3,18 @@ set -e
 
 RBENV_GEMSET_VERSION="0.2.0"
 
+# Provide rbenv completions
+if [ "$1" = "--complete" ]; then
+  echo "active"
+  echo "create"
+  echo "delete"
+  echo "list"
+  echo "install"
+  echo "uninstall"
+  echo "version"
+  exit
+fi
+
 case "$1" in
 "active")
   if [ -e "/etc/rbenv.d/util/gemset.bash" ]; then
