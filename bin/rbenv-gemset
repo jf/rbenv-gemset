@@ -179,7 +179,9 @@ shopt -s nullglob
 gemset_bin=(\${HOME}/.rbenv/versions/*/gemsets/*/bin/*)
 shopt -s nullglob
 
+cd "\$SHIM_PATH"
 make_shims \${gemset_bin[@]}
+cd "\$CUR_PATH"
 PLUGIN
 
   echo "rbenv-gemset plugin installed"
