@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-gemset_file="$(rbenv-gemset-file 2>&1 || true)"
+gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
 
 if [ -n "$gemset_file" ]; then
   cat "$gemset_file"
