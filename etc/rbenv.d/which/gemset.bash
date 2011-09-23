@@ -5,7 +5,7 @@ else
 fi
 
 if [ ! -x "$RBENV_COMMAND_PATH" ]; then
-  for gemset in $(active_gemsets); do
+  for gemset in $(rbenv-gemset active 2>/dev/null); do
     command="${RBENV_GEMSET_ROOT}/${gemset}/bin/$RBENV_COMMAND"
     if [ -x "$command" ]; then
       RBENV_COMMAND_PATH="$command"

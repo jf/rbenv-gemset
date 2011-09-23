@@ -6,7 +6,7 @@ else
   RBENV_GEMSET_ROOT="$(rbenv-prefix)/gemsets"
 fi
 
-for gemset in $(rbenv-gemset-active); do
+for gemset in $(rbenv-gemset active 2>/dev/null); do
   path="${RBENV_GEMSET_ROOT}/$gemset"
   if [ -z "$GEM_HOME" ]; then
     GEM_HOME="$path"
