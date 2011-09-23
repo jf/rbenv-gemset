@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+set -e
+
+RBENV_VERSION="$1"
+if [ -z "$RBENV_VERSION" ]; then
+  { echo "you must specify an installed version to associate the gemset with"
+    echo "available versions are:"
+    rbenv versions
+  } >&2
+  exit 1
+fi
+
+rbenv prefix "$RBENV_VERSION" > /dev/null # make sure the provided version exists
+
+RBENV_GEMSET="$2"
+if [ -z "$RBENV_GEMSET" ]; then
+  echo "you must specify a name for the new gemset" >&2
+  exit 1
+fi
+
+RBENV_GEMSET_PATH="$(rbenv prefix "$RBENV_VERSION")/gemsets/$RBENV_GEMSET"
+
+mkdir -p "$RBENV_GEMSET_PATH"
+echo "created ${RBENV_GEMSET} for ${RBENV_VERSION}"
