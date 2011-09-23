@@ -1,5 +1,3 @@
-source "${RBENV_PLUGIN_ROOT}/util/gemset.bash"
-
 unset GEM_HOME GEM_PATH
 
 if [ "$(rbenv-version-name)" = "system" ]; then
