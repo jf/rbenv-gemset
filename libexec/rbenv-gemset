@@ -1,0 +1,68 @@
+#!/usr/bin/env bash
+set -e
+
+RBENV_GEMSET_VERSION="0.2.1"
+
+# Provide rbenv completions
+if [ "$1" = "--complete" ]; then
+  echo "active"
+  echo "create"
+  echo "delete"
+  echo "file"
+  echo "list"
+  echo "version"
+  exit
+fi
+
+if [ "$1" = "version" ] || [ "$1" = "--version" ]; then
+  echo "rbenv-gemset ${RBENV_GEMSET_VERSION}"
+  echo "by Jamis Buck <jamis@jamisbuck.org>"
+  echo "http://github.com/jamis/rbenv-gemset"
+  exit
+fi
+
+resolve_link() {
+  $(type -p greadlink readlink | head -1) $1
+}
+
+abs_dirname() {
+  local cwd="$(pwd)"
+  local path="$1"
+
+  while [ -n "$path" ]; do
+    cd "${path%/*}"
+    local name="${path##*/}"
+    path="$(resolve_link "$name" || true)"
+  done
+
+  pwd
+  cd "$cwd"
+}
+
+bin_path="$(abs_dirname "$0")"
+export PATH="${bin_path}:$PATH"
+
+if [ -z "$RBENV_GEMSET_SYSTEM_ROOT" ]; then
+  export RBENV_GEMSET_SYSTEM_ROOT="/usr/local/share/ruby-gemsets"
+fi
+
+command="$1"
+command_path="$(command -v "rbenv-gemset-$command" || true)"
+
+if [ -z "$command_path" ]; then
+  { echo "version ${RBENV_GEMSET_VERSION}"
+    echo "${0##*/} [command] [options]"
+    echo
+    echo "possible commands are:"
+    echo "  active"
+    echo "  create [version] [gemset]"
+    echo "  delete [version] [gemset]"
+    echo "  file"
+    echo "  list"
+    echo "  version"
+  } >&2
+  exit 1
+fi
+
+shift
+exec "$command_path" "$@"

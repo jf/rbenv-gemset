@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+set -e
+
+gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
+
+if [ -n "$gemset_file" ]; then
+  cat "$gemset_file"
+else
+  echo "no active gemsets" >&2
+  exit 1
+fi

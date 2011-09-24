@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+RBENV_VERSION="$1"
+RBENV_GEMSET="$2"
+if [ -z "$RBENV_VERSION" ] || [ -z "$RBENV_GEMSET" ]; then
+  echo "you must specify a version and its associated gemset" >&2
+  exit 1
+fi
+
+rm -rf "$(rbenv prefix "$RBENV_VERSION")/gemsets/$RBENV_GEMSET"
+echo "deleted ${RBENV_GEMSET} from ${RBENV_VERSION}"
