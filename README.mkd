@@ -1,5 +1,4 @@
-rbenv-gemset
-============
+# rbenv-gemset
 
 rbenv-gemset is an extension for the [rbenv][rbenv] ruby version manager that
 allows you to use "gemsets", sandboxed collections of gems. This lets you have
@@ -7,32 +6,16 @@ multiple collections of gems installed in different sandboxes, and specify (on
 a per-application basis) which sets of gems should be used.
 
 
-Installation
-------------
+## Installation
 
-Installing from a fresh checkout of `rbenv-gemset`:
+1. Clone rbenv-gemset to the `$HOME/.rbenv/plugins` directory:
 
-1. Checkout rbenv-gemset somewhere:
+    $ git clone git://github.com/jamis/rbenv-gemset.git $HOME/.rbenv/plugins
 
-    $ git clone git://github.com/jamis/rbenv-gemset.git path/to/rbenv-gemset
-
-2. Add `path/to/rbenv-gemset/bin` to your `$PATH`:
-
-    $ echo 'export PATH="path/to/rbenv-gemset/bin:$PATH"' >> ~/.bash_profile
-
-3. Add `path/to/rbenv-gemset/etc/rbenv.d` to your `$RBENV_HOOK_PATH`
-
-    $ echo 'export RBENV_HOOK_PATH="path/to/rbenv-gemset/etc/rbenv.d:$RBENV_HOOK_PATH"' >> ~/.bash_profile
-
-4. Restart your shell so the environment gets updated:
-
-    $ exec $SHELL
-
-5. There is no step 5!
+2. There is no step 2!
 
 
-Usage
------
+## Usage
 
 In your application directory, create a file named `.rbenv-gemsets` and put the
 names of the gemsets you want to use in it, separated by whitespace. The first
@@ -48,8 +31,7 @@ the current directory, as well as in all ancestor directories, so as long
 as there is an `.rbenv-gemsets` file at or above the current directory.
 
 
-License
--------
+## License
 
 This code is placed in the public domain by the author, Jamis Buck. Use it as
 you wish. Please prefer good over evil.
