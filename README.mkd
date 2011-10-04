@@ -10,7 +10,9 @@ a per-application basis) which sets of gems should be used.
 
 1. Clone rbenv-gemset to the `$HOME/.rbenv/plugins` directory:
 
-    $ git clone git://github.com/jamis/rbenv-gemset.git $HOME/.rbenv/plugins
+    $ mkdir -p ~/.rbenv/plugins
+    $ cd ~/.rbenv/plugins
+    $ git clone git://github.com/jamis/rbenv-gemset.git
 
 2. There is no step 2!
 
