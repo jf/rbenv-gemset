@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+root="$(pwd)"
+while [ -n "$root" ]; do
+  if [ -e "${root}/.rbenv-gemsets" ]; then
+    echo "${root}/.rbenv-gemsets"
+    exit
+  fi
+  root="${root%/*}"
+done
+exit 1
