@@ -10,18 +10,25 @@ a per-application basis) which sets of gems should be used.
 Installation
 ------------
 
-Put `rbenv-gemset` somewhere (anywhere) in your path.
+Installing from a fresh checkout of `rbenv-gemset`:
 
-Then,
+1. Checkout rbenv-gemset somewhere:
 
-    rbenv gemset install
+    $ git clone git://github.com/jamis/rbenv-gemset.git path/to/rbenv-gemset
 
-This will install the necessary scripts needed to hook into rbenv, to add this
-functionality.
+2. Add `path/to/rbenv-gemset/bin` to your `$PATH`:
 
-To uninstall,
+    $ echo 'export PATH="path/to/rbenv-gemset/bin:$PATH"' >> ~/.bash_profile
 
-    rbenv gemset uninstall
+3. Add `path/to/rbenv-gemset/etc/rbenv.d` to your `$RBENV_HOOK_PATH`
+
+    $ echo 'export RBENV_HOOK_PATH="path/to/rbenv-gemset/etc/rbenv.d:$RBENV_HOOK_PATH"' >> ~/.bash_profile
+
+4. Restart your shell so the environment gets updated:
+
+    $ exec $SHELL
+
+5. There is no step 5!
 
 
 Usage
