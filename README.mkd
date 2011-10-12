@@ -32,6 +32,9 @@ The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
 the current directory, as well as in all ancestor directories, so as long
 as there is an `.rbenv-gemsets` file at or above the current directory.
 
+Alternatively, you can set the RBENV_GEMSET_FILE environment variable to the
+absolute path of the gemset file.
+
 
 ## License
 
