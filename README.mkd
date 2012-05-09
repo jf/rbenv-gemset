@@ -8,14 +8,21 @@ a per-application basis) which sets of gems should be used.
 
 ## Installation
 
-1. Clone rbenv-gemset to the `$HOME/.rbenv/plugins` directory:
+### GitHub
 
-        $ mkdir -p ~/.rbenv/plugins
-        $ cd ~/.rbenv/plugins
-        $ git clone git://github.com/jamis/rbenv-gemset.git
+Clone rbenv-gemset to the `$HOME/.rbenv/plugins` directory:
 
-2. There is no step 2!
+    $ mkdir -p ~/.rbenv/plugins
+    $ cd ~/.rbenv/plugins
+    $ git clone git://github.com/jamis/rbenv-gemset.git
 
+### Homebrew
+
+You can also install rbenv-gemset using the [Homebrew][homebrew] package manager
+on Mac OS X:
+
+    $ brew update
+    $ brew install rbenv-gemset
 
 ## Usage
 
@@ -24,7 +31,7 @@ names of the gemsets you want to use in it, separated by whitespace. The first
 gemset in the list will be the primary gemset, where new gems will be
 installed.
 
-        $ echo my-gemset > .rbenv-gemsets
+    $ echo my-gemset > .rbenv-gemsets
 
 Now, all commands involving gems will use the gemsets you specified.
 
@@ -43,3 +50,4 @@ you wish. Please prefer good over evil.
 
 
 [rbenv]: http://github.com/sstephenson/rbenv
+[homebrew]: http://mxcl.github.com/homebrew/
