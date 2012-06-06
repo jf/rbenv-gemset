@@ -3,11 +3,15 @@ set -e
 
 gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
 
-if [ -n "$RBENV_GEMSET_NAMES" ]; then
-  echo $RBENV_GEMSET_NAMES
+if [ -n "$RBENV_GEMSETS" ]; then
+  echo $RBENV_GEMSETS
 elif [ -n "$gemset_file" ]; then
-  cat "$gemset_file"
+  RBENV_GEMSETS="global"
+  RBENV_GEMSETS="$(cat "$gemset_file") $RBENV_GEMSETS"
+  echo $RBENV_GEMSETS
 else
   echo "no active gemsets" >&2
   exit 1
 fi
+
+
