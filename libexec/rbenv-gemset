@@ -60,6 +60,8 @@ if [ -z "$command_path" ]; then
     echo "  file"
     echo "  list"
     echo "  version"
+    echo
+    echo "For full documentation, see: https://github.com/jamis/rbenv-gemset#readme"
   } >&2
   exit 1
 fi
