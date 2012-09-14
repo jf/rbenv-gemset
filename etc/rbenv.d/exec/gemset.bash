@@ -18,4 +18,7 @@ done
 
 if [ -n "$GEM_HOME" ]; then
   export GEM_HOME GEM_PATH
+elif [ -n "$RBENV_GEMSET_ENFORCED" ]; then
+  echo "aborting; gemsets are being enforced" >&2
+  exit 1
 fi
