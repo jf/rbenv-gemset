@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -z "$RBENV_GEMSET_SYSTEM_ROOT" ]; then
+  export RBENV_GEMSET_SYSTEM_ROOT="/usr/local/share/ruby-gemsets"
+fi
+
+echo "$RBENV_GEMSET_SYSTEM_ROOT"

@@ -10,6 +10,7 @@ if [ "$1" = "--complete" ]; then
   echo "delete"
   echo "file"
   echo "list"
+  echo "system-root"
   echo "version"
   exit
 fi
@@ -41,10 +42,6 @@ abs_dirname() {
 
 bin_path="$(abs_dirname "$0")"
 export PATH="${bin_path}:$PATH"
-
-if [ -z "$RBENV_GEMSET_SYSTEM_ROOT" ]; then
-  export RBENV_GEMSET_SYSTEM_ROOT="/usr/local/share/ruby-gemsets"
-fi
 
 command="$1"
 command_path="$(command -v "rbenv-gemset-$command" || true)"
