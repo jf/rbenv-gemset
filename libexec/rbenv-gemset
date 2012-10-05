@@ -5,16 +5,24 @@ RBENV_GEMSET_VERSION="0.3.0"
 
 # Provide rbenv completions
 if [ "$1" = "--complete" ]; then
-  echo "active"
-  echo "create"
-  echo "delete"
-  echo "file"
-  echo "list"
-  echo "version"
-  exit
+  if [ -z "$2" ]; then
+    echo "active"
+    echo "create"
+    echo "delete"
+    echo "file"
+    echo "list"
+    echo "version"
+    exit
+  else
+    gemset_completion=1
+    shift
+  fi
 fi
 
 if [ "$1" = "version" ] || [ "$1" = "--version" ]; then
+  if [ -z "$gemset_completion" ]; then
+    exit
+  fi
   echo "rbenv-gemset ${RBENV_GEMSET_VERSION}"
   echo "by Jamis Buck <jamis@jamisbuck.org>"
   echo "http://github.com/jamis/rbenv-gemset"
@@ -67,4 +75,8 @@ if [ -z "$command_path" ]; then
 fi
 
 shift
-exec "$command_path" "$@"
+if [ -n "$gemset_completion" ] && grep -i "^# provide rbenv completions" "$command_path" >/dev/null; then
+  exec "$command_path" --complete "$@"
+elif [ -z "$gemset_completion" ]; then
+  exec "$command_path" "$@"
+fi
