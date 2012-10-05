@@ -1,6 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
+# Provide rbenv completions
+if [ "$1" = "--complete" ]; then
+  if [ -z "$2" ]; then
+    exec rbenv-versions --bare
+  fi
+  exit
+fi
+
 RBENV_VERSION="$1"
 if [ -z "$RBENV_VERSION" ]; then
   { echo "you must specify an installed version to associate the gemset with"

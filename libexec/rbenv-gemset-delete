@@ -1,6 +1,24 @@
 #!/usr/bin/env bash
 set -e
 
+# Provide rbenv completions
+if [ "$1" = "--complete" ]; then
+  if [ -z "$2" ]; then
+    exec rbenv-versions --bare
+  elif [ -z "$3" ]; then
+    shopt -s nullglob
+    gemsets=($(rbenv prefix "$2")/gemsets/*)
+    shopt -u nullglob
+
+    if [ -n "$gemsets" ]; then
+      for gemset in ${gemsets[@]}; do
+        echo "${gemset##*/}"
+      done
+    fi
+  fi
+  exit
+fi
+
 RBENV_VERSION="$1"
 RBENV_GEMSET="$2"
 if [ -z "$RBENV_VERSION" ] || [ -z "$RBENV_GEMSET" ]; then
