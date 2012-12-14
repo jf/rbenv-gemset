@@ -7,7 +7,12 @@ if [ -n "$RBENV_GEMSETS" ]; then
   echo $RBENV_GEMSETS
 elif [ -n "$gemset_file" ]; then
   RBENV_GEMSETS="global"
-  RBENV_GEMSETS="$(cat "$gemset_file") $RBENV_GEMSETS"
+  specified_gemset=$(cat $gemset_file)
+  if [[ "$specified_gemset" =~ "\bglobal\b" ]]; then
+    RBENV_GEMSETS=$specified_gemset
+  else
+    RBENV_GEMSETS="$specified_gemset $RBENV_GEMSETS"
+  fi
   echo $RBENV_GEMSETS
 else
   echo "no active gemsets" >&2
