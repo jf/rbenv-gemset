@@ -1,0 +1,28 @@
+#!/usr/bin/env bash
+set -e
+
+gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
+
+if [[ -n "$gemset_file" ]]; then
+  echo "gemsets file already present: $gemset_file" >&2
+  exit 0
+fi
+
+RBENV_GEMSET="$1"
+
+if [ -z "$RBENV_GEMSET" ]; then
+  RBENV_GEMSET=$(basename "$PWD")
+  if [[ "$RBENV_GEMSET" =~ [[:space:]] ]]; then
+    echo "Your folder name currently contains spaces, and it was not possible to guess a gemset name from it. Please provide it manually." >&2
+    exit 1
+  fi
+fi
+
+RBENV_VERSION=$(rbenv version-name)
+rbenv gemset create "$RBENV_VERSION" $RBENV_GEMSET
+echo $RBENV_GEMSET > .rbenv-gemsets
+
+echo created and initialized the following gemset for use with $RBENV_VERSION
+echo =====
+echo $RBENV_GEMSET
+echo =====

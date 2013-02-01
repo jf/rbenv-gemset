@@ -6,6 +6,7 @@ RBENV_GEMSET_VERSION="0.5.3"
 # Provide rbenv completions
 if [ "$1" = "--complete" ]; then
   if [ -z "$2" ]; then
+    echo "init"
     echo "active"
     echo "create"
     echo "delete"
