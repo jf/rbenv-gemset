@@ -7,6 +7,9 @@ if [ -z "$RBENV_GEMSET_FILE" ]; then
     if [ -e "${root}/.rbenv-gemsets" ]; then
       RBENV_GEMSET_FILE="${root}/.rbenv-gemsets"
       break
+    elif [ -e "${root}/.ruby-gemset" ]; then
+      RBENV_GEMSET_FILE="${root}/.ruby-gemset"
+      break
     fi
     root="${root%/*}"
   done
