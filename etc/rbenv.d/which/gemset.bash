@@ -4,6 +4,8 @@ else
   RBENV_GEMSET_ROOT="$(rbenv-prefix)/gemsets"
 fi
 
+OLDIFS="$IFS"
+IFS=$' \t\n'
 for gemset in $(rbenv-gemset active 2>/dev/null); do
   command="${RBENV_GEMSET_ROOT}/${gemset}/bin/$RBENV_COMMAND"
   if [ -x "$command" ]; then
@@ -11,3 +13,4 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
     break
   fi
 done
+IFS="$OLDIFS"
