@@ -62,7 +62,7 @@ if [ -z "$command_path" ]; then
     echo "${0##*/} [command] [options]"
     echo
     echo "possible commands are:"
-    echo "  active"
+    echo "  active [gemset]"
     echo "  create [version] [gemset]"
     echo "  delete [version] [gemset]"
     echo "  file"
