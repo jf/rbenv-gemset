@@ -16,7 +16,11 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
     if [ -z "$GEM_HOME" ]; then
       GEM_HOME="$path"
     fi
-    GEM_PATH="$GEM_PATH:$path"
+    if [ -z "$GEM_PATH" ]; then
+      GEM_PATH=$path
+    else
+      GEM_PATH="$GEM_PATH:$path"
+    fi
   fi
 done
 
