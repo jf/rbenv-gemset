@@ -20,7 +20,7 @@ if [ "$1" = "--complete" ]; then
 fi
 
 if [ "$1" = "version" ] || [ "$1" = "--version" ]; then
-  if [ -z "$gemset_completion" ]; then
+  if [ -n "$gemset_completion" ]; then
     exit
   fi
   echo "rbenv-gemset ${RBENV_GEMSET_VERSION}"
