@@ -22,7 +22,7 @@ fi
 if [ "$1" = "version" ] || [ "$1" = "--version" ]; then
   echo "rbenv-gemset ${RBENV_GEMSET_VERSION}"
   echo "by Jamis Buck <jamis@jamisbuck.org>"
-  echo "http://github.com/jamis/rbenv-gemset"
+  echo "http://github.com/jf/rbenv-gemset"
   exit
 fi
 
@@ -66,7 +66,7 @@ if [ -z "$command_path" ]; then
     echo "  list"
     echo "  version"
     echo
-    echo "For full documentation, see: https://github.com/jamis/rbenv-gemset#readme"
+    echo "For full documentation, see: https://github.com/jf/rbenv-gemset#readme"
   } >&2
   exit 1
 fi
