@@ -25,6 +25,8 @@ if [ "$1" = "version" ] || [ "$1" = "--version" ]; then
   fi
   echo "rbenv-gemset ${RBENV_GEMSET_VERSION}"
   echo "by Jamis Buck <jamis@jamisbuck.org>"
+  echo "Currently maintained by Jeffrey 'jf' Lim <jfs.world@gmail.com>"
+  echo
   echo "http://github.com/jf/rbenv-gemset"
   exit
 fi
