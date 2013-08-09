@@ -6,22 +6,36 @@ multiple collections of gems installed in different sandboxes, and specify (on
 a per-application basis) which sets of gems should be used.
 
 
+## Table of Contents
+
+* [Installation](#installation)
+  * [Homebrew on Mac OS X](#homebrew-on-mac-os-x)
+  * [GitHub Checkout](#github-checkout)
+* [Usage](#usage)
+* [History](#history)
+* [License](#license)
+
+
+
 ## Installation
 
-### Homebrew
 
-The easiest way to install (if you are on Mac OSX) is via the [Homebrew][homebrew] package manager:
+### Homebrew on Mac OS X
+
+The easiest way to install (if you are on Mac OS X) is via the [Homebrew][homebrew] package manager:
 
     $ brew update
     $ brew install rbenv-gemset
 
-### GitHub
+### GitHub Checkout
 
 Otherwise, clone rbenv-gemset to the `$HOME/.rbenv/plugins` directory:
 
     $ mkdir -p ~/.rbenv/plugins
     $ cd ~/.rbenv/plugins
-    $ git clone git://github.com/jamis/rbenv-gemset.git
+    $ git clone git://github.com/jf/rbenv-gemset.git
+
+
 
 ## Usage
 
@@ -40,6 +54,15 @@ as there is an `.rbenv-gemsets` file at or above the current directory.
 
 Alternatively, you can set the RBENV_GEMSET_FILE environment variable to the
 absolute path of the gemset file.
+
+
+
+## History
+
+
+
+Jamis Buck started the project in 2011, and Joe Fiorini took over as maintainer in May 2012. Jeffrey 'jf' Lim is now the current maintainer, and took over in July 2013.
+
 
 
 ## License
