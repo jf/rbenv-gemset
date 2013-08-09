@@ -39,14 +39,14 @@ Otherwise, clone rbenv-gemset to the `$HOME/.rbenv/plugins` directory:
 
 ## Usage
 
-In your application directory, create a file named `.rbenv-gemsets` and put the
-names of the gemsets you want to use in it, separated by whitespace. The first
-gemset in the list will be the primary gemset, where new gems will be
-installed.
+In your application directory, create a file named `.rbenv-gemsets` with the
+names of the gemsets that you want to use on separate lines, or separated
+by whitespace. The first gemset in the list will be the primary gemset, where
+new gems will be installed.
 
-    $ echo my-gemset > .rbenv-gemsets
+    $ echo -e "my-gemset\nanother-gemset" > .rbenv-gemsets
 
-Now, all commands involving gems will use the gemsets you specified.
+Now, all commands involving gems will use the gemsets that you specified.
 
 The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
 the current directory, as well as in all ancestor directories, so as long
