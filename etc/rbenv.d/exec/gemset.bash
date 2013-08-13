@@ -8,7 +8,7 @@ fi
 
 OLDIFS="$IFS"
 IFS=$' \t\n'
-for gemset in $(rbenv-gemset active 2>/dev/null); do
+for gemset in $(rbenv gemset active 2>/dev/null); do
   path="${RBENV_GEMSET_ROOT}/$gemset"
   PATH="$path/bin:$PATH"
   if [ -z "$GEM_HOME" ]; then
