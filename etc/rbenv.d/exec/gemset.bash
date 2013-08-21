@@ -6,11 +6,18 @@ else
   RBENV_GEMSET_ROOT="$(rbenv-prefix)/gemsets"
 fi
 
+RBENV_GEMSET_DIR="$(dirname "$(rbenv-gemset file 2>/dev/null)" 2>/dev/null)"
+project_gemset='\..+'
 OLDIFS="$IFS"
 IFS=$' \t\n'
 for gemset in $(rbenv-gemset active 2>/dev/null); do
-  path="${RBENV_GEMSET_ROOT}/$gemset"
+  if [[ $gemset =~ $project_gemset ]]; then
+    path="${RBENV_GEMSET_DIR}/$gemset"
+  else
+    path="${RBENV_GEMSET_ROOT}/$gemset"
+  fi
   PATH="$path/bin:$PATH"
+
   if [ -z "$GEM_HOME" ]; then
     GEM_HOME="$path"
     GEM_PATH="$path"
