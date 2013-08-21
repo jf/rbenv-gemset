@@ -1,16 +1,22 @@
-# rbenv-gemset
+# Do all that you need to more easily with rbenv-gemset!
+
+`rbenv-gemset` plugs into [the goodness of rbenv](https://github.com/sstephenson/rbenv/wiki/Why-rbenv%3F),
+and brings you gem management that is at once simple, easy to understand, set up,
+and then use, to do pretty much all that you really need to, really, with gemsets.
 
 rbenv-gemset is an extension for the [rbenv][rbenv] ruby version manager that
 allows you to use "gemsets", sandboxed collections of gems. This lets you have
 multiple collections of gems installed in different sandboxes, and specify (on
 a per-application basis) which sets of gems should be used.
 
+*New with v0.4.0!* Project gemsets. Install all the gems that you want into a project directory; and then clean it all up very easily after you're done with `rm -rf project`!
+
 
 ## Table of Contents
 
 * [Installation](#installation)
-  * [Homebrew on Mac OS X](#homebrew-on-mac-os-x)
   * [GitHub Checkout](#github-checkout)
+  * [Homebrew](#homebrew)
 * [Usage](#usage)
 * [History](#history)
 * [License](#license)
@@ -20,33 +26,44 @@ a per-application basis) which sets of gems should be used.
 ## Installation
 
 
-### Homebrew on Mac OS X
-
-The easiest way to install (if you are on Mac OS X) is via the [Homebrew][homebrew] package manager:
-
-    $ brew update
-    $ brew install rbenv-gemset
-
 ### GitHub Checkout
 
-Otherwise, clone rbenv-gemset to the `$HOME/.rbenv/plugins` directory:
+Clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
     $ mkdir -p ~/.rbenv/plugins
     $ cd ~/.rbenv/plugins
     $ git clone git://github.com/jf/rbenv-gemset.git
 
+### Homebrew
+
+If you want to use [Homebrew][homebrew] (on Mac OS X):
+
+    $ brew update
+    $ brew install rbenv-gemset
+
 
 
 ## Usage
 
-In your application directory, create a file named `.rbenv-gemsets` with the
+In your application directory, create a file named `.rbenv-gemsets`, with the
 names of the gemsets that you want to use on separate lines, or separated
 by whitespace. The first gemset in the list will be the primary gemset, where
 new gems will be installed.
 
     $ echo -e "my-gemset\nanother-gemset" > .rbenv-gemsets
 
-Now, all commands involving gems will use the gemsets that you specified.
+Now all commands involving gems will use the gemsets that you've specified.
+
+To have gems install into a sub-folder in your project directory for easy removal later (`rm -rf project`!) / editing / testing,
+you can use a project gemset. A project gemset has a '.' ("dot") as the first character:
+
+    $ echo '.gems' > .rbenv-gemsets
+
+This will then install your gems into `project/.gems`. If you don't want to use a "dot directory" to house your gems, then do something like this instead:
+
+    $ echo './gems' > .rbenv-gemsets
+
+This will then install your gems into `project/gems`.
 
 The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
 the current directory, as well as in all ancestor directories, so as long
