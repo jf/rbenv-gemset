@@ -1,15 +1,15 @@
 # Do all that you need to more easily with rbenv-gemset!
 
-`rbenv-gemset` plugs into [the goodness of rbenv](https://github.com/sstephenson/rbenv/wiki/Why-rbenv%3F),
-and brings you gem management that is at once simple, easy to understand, set up,
-and then use, to do pretty much all that you really need to, really, with gemsets.
+rbenv-gemset plugs into the [goodness of rbenv](https://github.com/sstephenson/rbenv/wiki/Why-rbenv%3F),
+and brings you gem management that is at once simple, easy to understand, set up (just one file! and with the simplest format ever),
+and then use, to do pretty much everything that you really need to do with gemsets.
 
 rbenv-gemset is an extension for the [rbenv][rbenv] ruby version manager that
 allows you to use "gemsets", sandboxed collections of gems. This lets you have
 multiple collections of gems installed in different sandboxes, and specify (on
 a per-application basis) which sets of gems should be used.
 
-*New with v0.4.0!* Project gemsets. Install all the gems that you want into a project directory; and then clean it all up very easily after you're done with `rm -rf project`!
+**New with v0.4.0!** Project gemsets. Install all the gems that you want into a project directory; and then clean it all up very easily after you're done with `rm -rf project`!
 
 
 ## Table of Contents
