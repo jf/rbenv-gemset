@@ -1,7 +1,7 @@
 # Do all that you need to more easily with rbenv-gemset!
 
-rbenv-gemset plugs into the [goodness of rbenv](https://github.com/sstephenson/rbenv/wiki/Why-rbenv%3F),
-and brings you gem management that is at once simple, easy to understand, set up (just one file! and with the simplest format ever),
+rbenv-gemset plugs in to the [goodness of rbenv](https://github.com/sstephenson/rbenv/wiki/Why-rbenv%3F),
+and brings you gem management that is simple, easy to understand, set up (just one file with the simplest format ever!),
 and then use, to do pretty much everything that you really need to do with gemsets.
 
 rbenv-gemset is an extension for the [rbenv][rbenv] ruby version manager that
@@ -59,11 +59,12 @@ you can use a project gemset. A project gemset has a '.' ("dot") as the first ch
 
     $ echo '.gems' > .rbenv-gemsets
 
-This will then install your gems into `project/.gems`. If you don't want to use a "dot directory" to house your gems, then do something like this instead:
+This will then install your gems into `project/.gems/`. If you don't want to use a "dot directory" to house your gems (but still want to use a project gemset),
+then do something like this instead:
 
     $ echo './gems' > .rbenv-gemsets
 
-This will then install your gems into `project/gems`.
+This will then install your gems into `project/gems/`.
 
 The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
 the current directory, as well as in all ancestor directories, so as long
