@@ -73,14 +73,15 @@ the current directory, as well as in all ancestor directories, so as long
 as there is an `.rbenv-gemsets` file at or above the current directory.
 
 
-*Special environment variable tips and tricks*
+**Special environment variable tips and tricks**
 
-`RBENV_GEMSETS`: for a quick install into a certain gemset, you can use RBENV_GEMSETS:
+*RBENV_GEMSETS*: 
+You can use this environment variable when you want to work with a certain gemset (or gemset list!). For a quick install into a certain gemset, for example, you can do something like the following:
 
 	$ RBENV_GEMSETS=global gem install rake
 
-`RBENV_GEMSET_FILE`: This isn't exactly recommended, but you can set the RBENV_GEMSET_FILE environment variable to the
-absolute path of a gemset file if the gemset file you want isn't found in any of your ancestor directories. You'd better know what you're doing!
+*RBENV_GEMSET_FILE*:
+This isn't exactly recommended, but you can set RBENV_GEMSET_FILE to the absolute path of a gemset file if the gemset file you want isn't in any of your ancestor directories. You'd better know what you're doing, though!
 
 
 
