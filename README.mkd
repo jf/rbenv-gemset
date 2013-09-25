@@ -45,6 +45,7 @@ If you want to use [Homebrew][homebrew] (on Mac OS X):
 
 ## Usage
 
+
 In your application directory, create a file named `.rbenv-gemsets`, with the
 names of the gemsets that you want to use on separate lines, or separated
 by whitespace. The first gemset in the list will be the primary gemset, where
@@ -78,12 +79,12 @@ absolute path of the gemset file.
 ## History
 
 
-
 Jamis Buck started the project in 2011, and Joe Fiorini took over as maintainer in May 2012. Jeffrey 'jf' Lim is now the current maintainer, and took over in July 2013.
 
 
 
 ## License
+
 
 This code is placed in the public domain by the author, Jamis Buck. Use it as
 you wish. Please prefer good over evil.
