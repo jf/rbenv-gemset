@@ -16,6 +16,6 @@ done
 IFS="$OLDIFS"
 
 cd "$SHIM_PATH"
-gemset_bin=(${RBENV_ROOT}/versions/*/gemsets/*/bin/*)
-make_shims "${gemset_bin[@]}" "${RBENV_ROOT}/versions/*/gemsets/.project-gemsets/*/bin/*"
+gemset_bin=(${RBENV_ROOT}/versions/*/gemsets/*/bin/* ${RBENV_ROOT}/versions/*/gemsets/.project-gemsets/*/bin/*)
+make_shims "${gemset_bin[@]}"
 cd "$CUR_PATH"
