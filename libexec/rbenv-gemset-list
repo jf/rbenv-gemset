@@ -3,13 +3,21 @@ set -e
 
 for version in "$RBENV_ROOT"/versions/*; do
   shopt -s nullglob
-  gemsets=("$version"/gemsets/*)
+  gemsets=("$version"/gemsets/* "$version"/gemsets/.project-gemsets/*)
   shopt -u nullglob
 
   if [ -n "$gemsets" ]; then
     echo ${version##*/}:
+    project_gemset="^$version/gemsets/.project-gemsets/"
     for gemset in "${gemsets[@]}"; do
-      echo "  ${gemset##*/}"
+      if [[ $gemset =~ $project_gemset ]]; then
+        location=${gemset##*/}
+        echo -n "  ${location//__//}"
+        [[ -e $gemset ]]   && echo
+        [[ ! -e $gemset ]] && echo "  (shifted or removed)"
+      else
+        echo "  ${gemset##*/}"
+      fi
     done
   fi
 done
