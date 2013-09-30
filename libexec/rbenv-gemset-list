@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -e
 
-for version in $(rbenv versions --bare); do
+for version in "$RBENV_ROOT"/versions/*; do
   shopt -s nullglob
-  gemsets=($(rbenv prefix "$version")/gemsets/*)
+  gemsets=("$version"/gemsets/*)
   shopt -u nullglob
 
   if [ -n "$gemsets" ]; then
-    echo "$version:"
-    for gemset in ${gemsets[@]}; do
+    echo ${version##*/}:
+    for gemset in "${gemsets[@]}"; do
       echo "  ${gemset##*/}"
     done
   fi
