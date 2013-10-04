@@ -30,7 +30,7 @@ a per-application basis) which sets of gems should be used.
 
 Clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
-    $ mkdir -p ~/.rbenv/plugins
+    $ mkdir ~/.rbenv/plugins
     $ cd ~/.rbenv/plugins
     $ git clone git://github.com/jf/rbenv-gemset.git
 
@@ -78,10 +78,13 @@ as there is an `.rbenv-gemsets` file at or above the current directory.
 *RBENV_GEMSETS*: 
 You can use this environment variable when you want to work with a certain gemset (or gemset list!). For a quick install into a certain gemset, for example:
 
-	$ RBENV_GEMSETS=global gem install rake
+	$ RBENV_GEMSETS="global" gem install thin
 
 *RBENV_GEMSET_FILE*:
 You have to know what you're doing, but you can set RBENV_GEMSET_FILE to the absolute path of a gemset file if you want to use another gemset file that isn't in any of your ancestor directories.
+*Note that you have to be using the same ruby version for this to work as expected!*
+
+	$ RBENV_GEMSET_FILE="$HOME/hplabs/project1/.rbenv-gemsets" rails new newproject
 
 
 
