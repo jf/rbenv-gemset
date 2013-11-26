@@ -28,7 +28,8 @@ done
 IFS="$OLDIFS"
 
 RUBY_BIN=$(rbenv which ruby)
-DEFAULT_GEM_PATH=$(command "$RUBY_BIN" -r rubygems -e 'puts Gem.path.join(":")')
+RUBY_SCRIPT='puts Gem.path.grep(/versions/).join(":")'
+DEFAULT_GEM_PATH=$(command "$RUBY_BIN" -r rubygems -e "$RUBY_SCRIPT")
 GEM_PATH="$GEM_PATH:$DEFAULT_GEM_PATH"
 
 if [ -n "$GEM_HOME" ]; then
