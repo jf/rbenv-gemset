@@ -82,7 +82,7 @@ You can use this environment variable when you want to work with a certain gemse
 
 *RBENV_GEMSET_FILE*:
 You have to know what you're doing, but you can set RBENV_GEMSET_FILE to the absolute path of a gemset file if you want to use another gemset file that isn't in any of your ancestor directories.
-*Note that you have to be using the same ruby version for this to work as expected!*
+*Note that you have to be using the same version of ruby for this to work as expected!*
 
 	$ RBENV_GEMSET_FILE="$HOME/hplabs/project1/.rbenv-gemsets" rails new newproject
 
