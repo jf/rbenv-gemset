@@ -10,7 +10,14 @@ RBENV_GEMSET_DIR="$(dirname "$(rbenv-gemset file 2>/dev/null)" 2>/dev/null)"
 project_gemset='\..+'
 OLDIFS="$IFS"
 IFS=$' \t\n'
+
 for gemset in $(rbenv-gemset active 2>/dev/null); do
+  if [ $gemset = "__DEFAULT__" ];then
+    RUBY_BIN=$(rbenv which ruby)
+    DEFAULT_GEM_PATH=$(command "$RUBY_BIN" -e "puts Gem.path.grep(/versions/).first")
+    continue
+  fi
+
   if [[ $gemset =~ $project_gemset ]]; then
     path="${RBENV_GEMSET_DIR}/$gemset"
   else
@@ -26,7 +33,8 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
   fi
 done
 IFS="$OLDIFS"
-RUBINIUS="$(rbenv-prefix)/gems" && [ -d "$RUBINIUS" ] && GEM_PATH="$GEM_PATH:$RUBINIUS"
+
+[ -n $DEFAULT_GEM_PATH ] && GEM_PATH=$GEM_PATH:$DEFAULT_GEM_PATH
 
 if [ -n "$GEM_HOME" ]; then
   export GEM_HOME GEM_PATH PATH
