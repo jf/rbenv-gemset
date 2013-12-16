@@ -28,12 +28,12 @@ done
 IFS="$OLDIFS"
 
 set +e
-WHICH_RUBY=$(rbenv which ruby 2>/dev/null)
+WHICH_JRUBY=$(rbenv which jruby 2>/dev/null)
 set -e
-if [[ "$WHICH_RUBY" != "" ]]; then
-  GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
-else
+if [[ "$WHICH_JRUBY" != "" ]]; then
   GEM_PATH="$GEM_PATH:$("$(rbenv which jruby)" "$(rbenv which gem)" env gemdir)"
+else
+  GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
 fi
 
 if [ -n "$GEM_HOME" ]; then
