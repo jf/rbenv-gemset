@@ -31,9 +31,9 @@ set +e
 WHICH_RUBY=$(rbenv which ruby 2>/dev/null)
 set -e
 if [[ "$WHICH_RUBY" != "" ]]; then
-  GEM_PATH="$GEM_PATH:$("$WHICH_RUBY" -e 'print Gem.path.first')"
+  GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
 else
-  GEM_PATH="$GEM_PATH:$("$(rbenv which jruby)" -e 'print Gem.path.first')"
+  GEM_PATH="$GEM_PATH:$("$(rbenv which jruby)" "$(rbenv which gem)" env gemdir)"
 fi
 
 if [ -n "$GEM_HOME" ]; then
