@@ -1,3 +1,6 @@
+[[ $RBENV_GEMSET_ALREADY = yes ]] && return
+[[ $RBENV_GEMSET_ALREADY = "" ]] && export RBENV_GEMSET_ALREADY=yes
+
 unset GEM_HOME GEM_PATH
 
 if [ "$(rbenv-version-name)" = "system" ]; then
