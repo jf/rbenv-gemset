@@ -26,9 +26,9 @@ a per-application basis) which sets of gems should be used.
 ## Installation
 
 
-### GitHub Checkout
+### GitHub
 
-Clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
+Download and extract [the latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.3 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
     $ mkdir ~/.rbenv/plugins
     $ cd ~/.rbenv/plugins
@@ -36,7 +36,7 @@ Clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
 ### Homebrew
 
-If you want to use [Homebrew][homebrew] (on Mac OS X):
+If you want to use [Homebrew][homebrew] (Mac OS X):
 
     $ brew update
     $ brew install rbenv-gemset
