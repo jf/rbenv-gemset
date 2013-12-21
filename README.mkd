@@ -28,7 +28,7 @@ a per-application basis) which sets of gems should be used.
 
 ### GitHub
 
-Download and extract [the latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.3 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
+Download and extract the [latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.3 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
     $ mkdir ~/.rbenv/plugins
     $ cd ~/.rbenv/plugins
