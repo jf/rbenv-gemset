@@ -18,3 +18,8 @@ fi
 
 rbenv gemset create "$(rbenv version-name)" $RBENV_GEMSET
 echo $RBENV_GEMSET > .rbenv-gemsets
+
+echo created and initialized the following gemset for use with $(rbenv version-name)
+echo =====
+echo $RBENV_GEMSET
+echo =====
