@@ -1,17 +1,20 @@
 #!/usr/bin/env bash
 set -e
 
-RBENV_GEMSET="$1"
-RBENV_GEMSET=${RBENV_GEMSET:=$(basename $PWD)}
-
-if [[ -f .rbenv-gemsets ]]
-then
-  {
-    echo ".rbenv-gemsets already present"
-  } >&2
+if [[ -f .rbenv-gemsets ]]; then
+  echo ".rbenv-gemsets already present" >&2
   exit 1
-else
-  rbenv gemset create "$(rbenv version-name)" $RBENV_GEMSET
-  echo $RBENV_GEMSET > .rbenv-gemsets
-  echo created .rbenv-gemsets
 fi
+
+RBENV_GEMSET="$1"
+
+if [ -z "$RBENV_GEMSET" ]; then
+  RBENV_GEMSET=$(basename "$PWD")
+  if [[ "$RBENV_GEMSET" =~ [[:space:]] ]]; then
+    echo "current folder name contains spaces - can't inherit gemset name from it; please, provide your own" >&2
+    exit 1
+  fi
+fi
+
+rbenv gemset create "$(rbenv version-name)" $RBENV_GEMSET
+echo $RBENV_GEMSET > .rbenv-gemsets
