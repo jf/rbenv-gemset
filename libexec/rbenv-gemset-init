@@ -11,7 +11,7 @@ RBENV_GEMSET="$1"
 if [ -z "$RBENV_GEMSET" ]; then
   RBENV_GEMSET=$(basename "$PWD")
   if [[ "$RBENV_GEMSET" =~ [[:space:]] ]]; then
-    echo "current folder name contains spaces - can't inherit gemset name from it; please, provide your own" >&2
+    echo "Your folder name currently contains spaces, and it was not possible to guess a gemset name from it. Please provide it manually." >&2
     exit 1
   fi
 fi
