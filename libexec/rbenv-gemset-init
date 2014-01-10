@@ -1,9 +1,11 @@
 #!/usr/bin/env bash
 set -e
 
-if [[ -f .rbenv-gemsets ]]; then
-  echo ".rbenv-gemsets already present" >&2
-  exit 1
+gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
+
+if [[ -n "$gemset_file" ]]; then
+  echo "gemsets file already present: $gemset_file" >&2
+  exit 0
 fi
 
 RBENV_GEMSET="$1"
