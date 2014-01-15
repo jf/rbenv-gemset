@@ -7,7 +7,7 @@ if [ -n "$RBENV_GEMSETS" ]; then
   echo $RBENV_GEMSETS
 elif [ -n "$gemset_file" ]; then
   RBENV_GEMSETS=$(cat "$gemset_file")
-  if ! echo $RBENV_GEMSETS | egrep -m 1 "\bglobal\b" > /dev/null 2>&1; then
+  if [[ ! $RBENV_GEMSETS =~ [[:\<:]]global[[:\>:]] ]]; then 
     RBENV_GEMSETS="$RBENV_GEMSETS global"
   fi
   echo $RBENV_GEMSETS
