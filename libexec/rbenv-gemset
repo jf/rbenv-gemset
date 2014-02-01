@@ -69,6 +69,7 @@ if [ -z "$command_path" ]; then
     echo "  create [version] [gemset]"
     echo "  delete [version] [gemset]"
     echo "  file"
+    echo "  init [gemset]"
     echo "  list"
     echo "  version"
     echo
