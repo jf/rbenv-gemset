@@ -14,6 +14,7 @@ project_gemset='\..+'
 OLDIFS="$IFS"
 IFS=$' \t\n'
 for gemset in $(rbenv-gemset active 2>/dev/null); do
+  echo $gemset
   if [[ $gemset =~ $project_gemset ]]; then
     path="${RBENV_GEMSET_DIR}/$gemset"
   else
@@ -30,12 +31,7 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
 done
 IFS="$OLDIFS"
 
-set +e
-WHICH_JRUBY=$(rbenv which jruby 2>/dev/null)
-set -e
-if [[ "$WHICH_JRUBY" != "" ]]; then
-  GEM_PATH="$GEM_PATH:$("$(rbenv which jruby)" "$(rbenv which gem)" env gemdir)"
-else
+if [[ "$(rbenv gemset active 2>/dev/null)" =~ "global" ]]; then
   GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
 fi
 
