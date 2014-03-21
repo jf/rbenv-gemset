@@ -11,6 +11,8 @@ if [ "$1" = "--complete" ]; then
     echo "create"
     echo "delete"
     echo "file"
+    echo "optionfile"
+    echo "option"
     echo "list"
     echo "version"
     exit
@@ -70,6 +72,8 @@ if [ -z "$command_path" ]; then
     echo "  delete [version] [gemset]"
     echo "  file"
     echo "  init [gemset]"
+    echo "  optionfile"
+    echo "  option [option]"
     echo "  list"
     echo "  version"
     echo

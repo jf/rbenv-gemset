@@ -30,7 +30,7 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
 done
 IFS="$OLDIFS"
 
-if [[ "$(rbenv-gemset active 2>/dev/null)" =~ (\ |^)global($|\ ) ]]; then
+if [ "$(rbenv-gemset option exclude-default-gempath)" != "yes" ]; then
   GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
 fi
 

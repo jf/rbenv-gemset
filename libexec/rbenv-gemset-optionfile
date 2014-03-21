@@ -1,0 +1,20 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -z "$RBENV_GEMSET_OPTION_FILE" ]; then
+  root="$(pwd)"
+  while [ -n "$root" ]; do
+    if [ -e "${root}/.rbenv-gemset-options" ]; then
+      RBENV_GEMSET_OPTION_FILE="${root}/.rbenv-gemset-options"
+      break
+    fi
+    root="${root%/*}"
+  done
+fi
+
+if [ -e "$RBENV_GEMSET_OPTION_FILE" ]; then
+  echo "$RBENV_GEMSET_OPTION_FILE"
+  exit
+fi
+
+exit 1
