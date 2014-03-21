@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+set -e
+
+if [ -n "$1" ]; then
+  GEMSET_OPTION_FILE="$(rbenv-gemset-optionfile || true)"
+  if [ -n "$GEMSET_OPTION_FILE" ]; then
+    RBENV_GEMSET_OPTION=$(grep -m 1 ^$1= "$GEMSET_OPTION_FILE" | head -1 | sed "s/^$1=//" || true)
+    if [ -n "$RBENV_GEMSET_OPTION" ]; then
+      echo "$RBENV_GEMSET_OPTION"
+    fi
+  fi
+fi

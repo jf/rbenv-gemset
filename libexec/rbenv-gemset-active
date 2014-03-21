@@ -7,8 +7,11 @@ if [ -n "$RBENV_GEMSETS" ]; then
   echo $RBENV_GEMSETS
 elif [ -n "$gemset_file" ]; then
   RBENV_GEMSETS=$(cat "$gemset_file")
-  if echo $RBENV_GEMSETS | grep -v '\bglobal\b' >/dev/null 2>&1; then
-    RBENV_GEMSETS="$RBENV_GEMSETS global"
+  if [ "$(rbenv-gemset-option disable-global-gemset)" != "yes" ]; then
+    has_global='\bglobal\b'
+    if [[ ! $RBENV_GEMSETS =~ $has_global ]]; then
+      RBENV_GEMSETS="$RBENV_GEMSETS global"
+    fi
   fi
   echo $RBENV_GEMSETS
 else
