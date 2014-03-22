@@ -30,14 +30,7 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
 done
 IFS="$OLDIFS"
 
-set +e
-WHICH_JRUBY=$(rbenv which jruby 2>/dev/null)
-set -e
-if [[ "$WHICH_JRUBY" != "" ]]; then
-  GEM_PATH="$GEM_PATH:$("$(rbenv which jruby)" "$(rbenv which gem)" env gemdir)"
-else
-  GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
-fi
+GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
 
 if [ -n "$GEM_HOME" ]; then
   export GEM_HOME GEM_PATH PATH
