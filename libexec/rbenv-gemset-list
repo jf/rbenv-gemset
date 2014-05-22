@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-for version in "$RBENV_ROOT"/versions/*; do
+for version in "$(rbenv root)"/versions/*; do
   shopt -s nullglob
   gemsets=("$version"/gemsets/* "$version"/gemsets/.project-gemsets/*)
   shopt -u nullglob
