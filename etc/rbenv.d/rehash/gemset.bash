@@ -2,7 +2,7 @@ shopt -s nullglob
 
 RBENV_GEMSET_DIR="$(dirname "$(rbenv-gemset file 2>/dev/null)" 2>/dev/null)"
 PROJECT_GEMSET_LIST="${RBENV_ROOT}/versions/$(rbenv-version-name)/gemsets/.project-gemsets"
-project_gemset='\..+'
+project_gemset='^\..+'
 OLDIFS="$IFS"
 IFS=$' \t\n'
 for gemset in $(rbenv-gemset active 2>/dev/null); do
