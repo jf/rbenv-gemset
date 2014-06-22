@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+set -e
+
+gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
+
+if [ -n "$RBENV_GEMSETS" ]; then
+  echo $RBENV_GEMSETS
+elif [ -n "$gemset_file" ]; then
+  OPTIONS=$(cat "$gemset_file" | grep '^[+-]' || true)
+  echo $OPTIONS
+else
+  echo ""
+  exit 0
+fi

@@ -13,6 +13,7 @@ if [ "$1" = "--complete" ]; then
     echo "file"
     echo "list"
     echo "version"
+    echo "options"
     exit
   else
     gemset_completion=1
@@ -71,6 +72,7 @@ if [ -z "$command_path" ]; then
     echo "  file"
     echo "  init [gemset]"
     echo "  list"
+    echo "  options"
     echo "  version"
     echo
     echo "For full documentation, see: https://github.com/jf/rbenv-gemset#readme"
