@@ -30,7 +30,14 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
 done
 IFS="$OLDIFS"
 
-GEMSET_OPTIONS="$(rbenv-gemset options)"
+# extract special "option" gemsets from gemset file
+gemset_file="$(rbenv-gemset file 2>/dev/null || true)"
+if [ -n "$gemset_file" ]; then
+  RBENV_GEMSETS_RAW=$(cat "$gemset_file")
+  GEMSET_OPTIONS=$(echo $RBENV_GEMSETS_RAW | sed 's/^[^+|^-][^ ]\+[ |$]//g; s/[ ][^+|^-][^ ]\+//g;')
+else
+  GEMSET_OPTIONS=''
+fi
 
 if [[ ! $GEMSET_OPTIONS =~ '-standard' ]]; then
   GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
