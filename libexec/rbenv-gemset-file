@@ -4,8 +4,8 @@ set -e
 find_local_gemsets_file() {
   local root="$1"
   while [ -n "$root" ]; do
-    if [ -e "${root}/.ruby-gemsets" ]; then
-      echo "${root}/.ruby-gemsets"
+    if [ -e "${root}/.ruby-gemset" ]; then
+      echo "${root}/.ruby-gemset"
       exit
     elif [ -e "${root}/.rbenv-gemsets" ]; then
       echo "${root}/.rbenv-gemsets"
