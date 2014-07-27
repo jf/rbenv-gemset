@@ -1,23 +1,31 @@
 #!/usr/bin/env bash
 set -e
 
-if [ -z "$RBENV_GEMSET_FILE" ]; then
-  root="$(pwd)"
+locate_local_gemsets_file_from() {
+  local root="$1"
   while [ -n "$root" ]; do
     if [ -e "${root}/.rbenv-gemsets" ]; then
-      RBENV_GEMSET_FILE="${root}/.rbenv-gemsets"
-      break
+      echo "${root}/.rbenv-gemsets"
+      exit
     elif [ -e "${root}/.ruby-gemset" ]; then
-      RBENV_GEMSET_FILE="${root}/.ruby-gemset"
-      break
+      echo "${root}/.ruby-gemset"
+      exit
     fi
     root="${root%/*}"
   done
+}
+
+RBENV_VERSION_DIR="$(dirname "$(rbenv version-file)")"
+
+if [[ $RBENV_DIR = $RBENV_VERSION_DIR* ]]; then
+  locate_local_gemsets_file_from "$RBENV_DIR"
+  exit 1
 fi
 
-if [ -e "$RBENV_GEMSET_FILE" ]; then
+if [ -z "$RBENV_GEMSET_FILE" ]; then
+  locate_local_gemsets_file_from "$PWD"
+  exit 1
+elif [ -e "$RBENV_GEMSET_FILE" ]; then
   echo "$RBENV_GEMSET_FILE"
   exit
 fi
-
-exit 1
