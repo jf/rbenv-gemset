@@ -12,11 +12,12 @@ multiple collections of gems installed in different sandboxes, and specify (on
 a per-application basis) which sets of gems should be used.
 
 
-**RubyMine users!** Are you using RubyMine with rbenv-gemset? Please [vote for this ticket](http://youtrack.jetbrains.com/issue/RUBY-12839)!
-
-
 **Error reports and Bug reports:** [How to ensure that you get help](http://www.catb.org/~esr/faqs/smart-questions.html#intro),
 a.k.a. "How To Ask Questions The Smart Way"
+
+
+[*Special Note for RubyMine users!*](#special-note-for-rubymine-users)
+
 
 
 ## Table of Contents
@@ -24,6 +25,7 @@ a.k.a. "How To Ask Questions The Smart Way"
 * [Installation](#installation)
   * [GitHub](#github)
   * [Homebrew](#homebrew)
+  * [Special note for RubyMine users](#special-note-for-rubymine-users)
 * [Usage](#usage)
 * [How to Report Issues](#how-to-report-issues)
 * [History](#history)
@@ -44,10 +46,14 @@ Download and extract the [latest release](https://github.com/jf/rbenv-gemset/rel
 
 ### Homebrew
 
-If you want to use [Homebrew][homebrew] (Mac OS X):
+If you want to use [Homebrew](http://github.com/Homebrew/homebrew) (Mac OS X):
 
     $ brew update
     $ brew install rbenv-gemset
+
+### Special note for RubyMine users
+
+Are you using RubyMine with rbenv-gemset? Please [vote for this ticket](http://youtrack.jetbrains.com/issue/RUBY-12839)!
 
 
 
@@ -118,4 +124,3 @@ you wish. Please prefer good over evil.
 
 
 [rbenv]: http://github.com/sstephenson/rbenv
-[homebrew]: http://mxcl.github.com/homebrew/
