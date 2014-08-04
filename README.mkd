@@ -40,9 +40,7 @@ a.k.a. "How To Ask Questions The Smart Way"
 
 Download and extract the [latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.7 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
-    $ mkdir ~/.rbenv/plugins
-    $ cd ~/.rbenv/plugins
-    $ git clone git://github.com/jf/rbenv-gemset.git
+    $ git clone git://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
 
 ### Homebrew
 
