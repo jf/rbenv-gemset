@@ -8,9 +8,10 @@ IFS=$' \t\n'
 for gemset in $(rbenv-gemset active 2>/dev/null); do
   if [[ $gemset =~ $project_gemset ]]; then
     mkdir -p "$PROJECT_GEMSET_LIST"
+
     gemset=${RBENV_GEMSET_DIR}/$gemset
     link=${PROJECT_GEMSET_LIST}/${gemset////__}
-    ln -sf "$gemset" "$link"
+    if [[ ! -e $link ]]; then ln -s "$gemset" "$link"; fi
   fi
 done
 IFS="$OLDIFS"
