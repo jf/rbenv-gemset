@@ -38,7 +38,7 @@ a.k.a. "How To Ask Questions The Smart Way"
 
 ### GitHub
 
-Download and extract the [latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.7 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
+Download and extract the [latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.8 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
     $ git clone git://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e
 
-RBENV_GEMSET_VERSION="0.5.7"
+RBENV_GEMSET_VERSION="0.5.8"
 
 # Provide rbenv completions
 if [ "$1" = "--complete" ]; then
