@@ -12,9 +12,11 @@ for version in "$RBENV_ROOT"/versions/*; do
     for gemset in "${gemsets[@]}"; do
       if [[ $gemset =~ $project_gemset ]]; then
         location=${gemset##*/}
-        echo -n "  ${location//__//}"
-        [[ -e $gemset ]]   && echo
-        [[ ! -e $gemset ]] && echo "  (shifted or removed)"
+        if [[ -e $gemset ]]; then
+          echo "  ${location//__//}"
+        else
+          rm "$gemset"
+        fi
       else
         echo "  ${gemset##*/}"
       fi
