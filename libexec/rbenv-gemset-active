@@ -6,9 +6,15 @@ gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
 if [ -n "$RBENV_GEMSETS" ]; then
   echo $RBENV_GEMSETS
 elif [ -n "$gemset_file" ]; then
-  RBENV_GEMSETS=$(cat "$gemset_file")
-  if echo $RBENV_GEMSETS | grep -v '\bglobal\b' >/dev/null 2>&1; then
-    RBENV_GEMSETS="$RBENV_GEMSETS global"
+  RBENV_GEMSETS_RAW=$(cat "$gemset_file")
+  # extract special "option" gemsets
+  GEMSET_OPTIONS=$(echo $RBENV_GEMSETS_RAW | sed 's/^[^+|^-][^ ]\+//g; s/[ ][^+|^-][^ ]\+//g;')
+  # extract real gemsets
+  RBENV_GEMSETS=$(echo $RBENV_GEMSETS_RAW | sed 's/^[+|-][^ ]\+//g; s/[ ][+|-][^ ]\+//g;')
+  if [[ ! $GEMSET_OPTIONS =~ '-global' ]]; then
+    if echo $RBENV_GEMSETS | grep -v '\bglobal\b' >/dev/null 2>&1; then
+      RBENV_GEMSETS="$RBENV_GEMSETS global"
+    fi
   fi
   echo $RBENV_GEMSETS
 else
