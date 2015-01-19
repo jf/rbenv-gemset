@@ -9,7 +9,7 @@ elif [ -n "$gemset_file" ]; then
   RBENV_GEMSETS=$(cat "$gemset_file")
   if echo $RBENV_GEMSETS | grep -E '(^| )-global( |$)' >/dev/null 2>&1; then
     RBENV_GEMSETS=$(echo $RBENV_GEMSETS | sed -E 's/ /  /g;s/(^| )-?global( |$)//g')
-  elif echo $RBENV_GEMSETS | grep -v '\bglobal\b' >/dev/null 2>&1; then
+  elif echo $RBENV_GEMSETS | grep -vE '(^| )global( |$)' >/dev/null 2>&1; then
     RBENV_GEMSETS="$RBENV_GEMSETS global"
   fi
   echo $RBENV_GEMSETS
