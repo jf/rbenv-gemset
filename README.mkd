@@ -57,37 +57,34 @@ Are you using RubyMine with rbenv-gemset? Please [vote for this ticket](http://y
 
 ## Usage
 
+``rbenv-gemset`` command will gives you the following usage:
 
-In your application directory, create a file named `.rbenv-gemsets`, with the
-names of the gemsets that you want to use on separate lines, or separated
-by whitespace. The first gemset in the list will be the primary gemset, where
-new gems will be installed.
+    rbenv-gemset [command] [options]
 
-    $ echo -e "my-gemset\nanother-gemset" > .rbenv-gemsets
+    possible commands are:
+      active
+      create [version] [gemset]
+      delete [version] [gemset]
+      file
+      init [gemset]
+      list
+      version
 
-Now all commands involving gems will use the gemsets that you've specified.
+To create a gemset for your project, ``cd`` to your project and run ``rbenv-gemset init`` command. This will create ``.rbenv-gemset`` file where the content is your project name.
 
-To have gems install into a sub-folder in your project directory for easy removal later (`rm -rf project`!) / editing / testing,
-you can use a project gemset. A project gemset has a '.' ("dot") as the first character:
+Now you can check the existing gemsets via ``rbenv-gemsets list`` which should include the most recent gemset you just created for this project.
 
-    $ echo '.gems' > .rbenv-gemsets
+Any time you switch to another project where it has ``.rbenv-gemsets`` file it should automatically switch to that project's gemset. You can confirm this by running ``rbenv-gemsets active`` command.
 
-Your gems will then get installed in `project/.gems`.
-If you don't want to use a "dot directory" to house your gems but still want to use a project gemset,
-then do something like this instead:
+In case you wonder the gem are stored at:
+``/usr/local/var/rbenv/versions/$RUBY_VERSION/gemsets/YOUR_PROJECT_NAME/gems``.
 
-    $ echo './gems' > .rbenv-gemsets
-
-Your gems will then get installed in `project/gems`.
-
-The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
-the current directory, as well as in all ancestor directories, so as long
-as there is an `.rbenv-gemsets` file at or above the current directory.
+Also if you are using the ``bundler`` it should install the gems and the dependencies in above path.
 
 
 **Special environment variable tips and tricks**
 
-*RBENV_GEMSETS*: 
+*RBENV_GEMSETS*:
 You can use this environment variable when you want to work with a certain gemset (or gemset list!). For a quick install into a certain gemset, for example:
 
 	$ RBENV_GEMSETS="global" gem install thin
