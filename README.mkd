@@ -87,7 +87,7 @@ as there is an `.rbenv-gemsets` file at or above the current directory.
 
 **Special environment variable tips and tricks**
 
-*RBENV_GEMSETS*: 
+*RBENV_GEMSETS*:
 You can use this environment variable when you want to work with a certain gemset (or gemset list!). For a quick install into a certain gemset, for example:
 
 	$ RBENV_GEMSETS="global" gem install thin
