@@ -51,7 +51,7 @@ If you want to use [Homebrew](http://github.com/Homebrew/homebrew) (Mac OS X):
 
 ### Special note for RubyMine users
 
-Are you using RubyMine with rbenv-gemset? Please [vote for this ticket](http://youtrack.jetbrains.com/issue/RUBY-12839)!
+[RubyMine 8 now supports rbenv-gemset](https://youtrack.jetbrains.com/issue/RUBY-12839#comment=27-1179455). Thanks, guys!
 
 
 
