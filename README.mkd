@@ -57,7 +57,7 @@ Are you using RubyMine with rbenv-gemset? Please [vote for this ticket](http://y
 
 ## Usage
 
-``rbenv-gemset`` command will gives you the following usage:
+``rbenv gemset`` command will gives you the following usage:
 
     rbenv-gemset [command] [options]
 
@@ -70,11 +70,23 @@ Are you using RubyMine with rbenv-gemset? Please [vote for this ticket](http://y
       list
       version
 
-To create a gemset for your project, ``cd`` to your project and run ``rbenv-gemset init`` command. This will create ``.rbenv-gemset`` file where the content is your project name.
+```shell
+cd my-project
 
-Now you can check the existing gemsets via ``rbenv-gemsets list`` which should include the most recent gemset you just created for this project.
+# Setup gemset for your project.
+# Also will create a .rbenv-gemset file in the current directory.
+# NOTE: this will create gemset under the $RUBY_VERSION.
+rbenv gemset init
 
-Any time you switch to another project where it has ``.rbenv-gemsets`` file it should automatically switch to that project's gemset. You can confirm this by running ``rbenv-gemsets active`` command.
+# To create a gemset under a specific ruby version:
+rbenv gemset create [version] [gemset]
+
+# You can see the existing gemset by using the following command:
+# This should include the most recent gemset you just created.
+rbenv gemset list
+
+# You can delete the gemset with the following command:
+rbenv gemset delete  [version] [gemset]
 
 In case you wonder the gem are stored at:
 ``/usr/local/var/rbenv/versions/$RUBY_VERSION/gemsets/YOUR_PROJECT_NAME/gems``.
