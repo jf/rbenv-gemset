@@ -70,6 +70,8 @@ Are you using RubyMine with rbenv-gemset? Please [vote for this ticket](http://y
       list
       version
 
+Here is a basic example:
+
 ```shell
 cd my-project
 
@@ -87,11 +89,11 @@ rbenv gemset list
 
 # You can delete the gemset with the following command:
 rbenv gemset delete  [version] [gemset]
+```
 
-In case you wonder the gem are stored at:
-``/usr/local/var/rbenv/versions/$RUBY_VERSION/gemsets/YOUR_PROJECT_NAME/gems``.
+By default the rbenv-gemset init command will create the primary gemset, which is the project name, and it will initialize the directory under the ``$(rbenv prefix "$RBENV_VERSION")/gemsets/$RBENV_GEMSET``. If you are using the ``bundler`` it should install the gems and the dependencies in above path.
 
-Also if you are using the ``bundler`` it should install the gems and the dependencies in above path.
+You can modify the content of .rbenv-gemsets so the gems will be installed in the project directory (for example .gems or ./gems)
 
 
 **Special environment variable tips and tricks**
