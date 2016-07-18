@@ -62,7 +62,7 @@ command_path="$(command -v "rbenv-gemset-$command" || true)"
 
 if [ -z "$command_path" ]; then
   { echo "version ${RBENV_GEMSET_VERSION}"
-    echo "${0##*/} [command] [options]"
+    echo "rbenv gemset [command] [options]"
     echo
     echo "possible commands are:"
     echo "  active"
