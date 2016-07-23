@@ -27,6 +27,7 @@ a.k.a. "How To Ask Questions The Smart Way"
   * [Homebrew](#homebrew)
   * [Special note for RubyMine users](#special-note-for-rubymine-users)
 * [Usage](#usage)
+* [Usage (the advanced, "neckbeard" version](#usage-the-advanced-neckbeard-version)
 * [How to Report Issues](#how-to-report-issues)
 * [History](#history)
 * [License](#license)
@@ -57,9 +58,10 @@ If you want to use [Homebrew](http://github.com/Homebrew/homebrew) (Mac OS X):
 
 ## Usage
 
-``rbenv gemset`` command will gives you the following usage:
 
-    rbenv-gemset [command] [options]
+Running ``rbenv gemset`` will give you the following help:
+
+    rbenv gemset [command] [options]
 
     possible commands are:
       active
@@ -75,25 +77,56 @@ Here is a basic example:
 ```shell
 cd my-project
 
-# Setup gemset for your project.
-# Also will create a .rbenv-gemset file in the current directory.
-# NOTE: this will create gemset under the $RUBY_VERSION.
+# Set up a default gemset for your project.
+# Also will create a `.rbenv-gemsets` file in the current directory.
+# NOTE: this will create the gemset under the current ruby version.
 rbenv gemset init
 
 # To create a gemset under a specific ruby version:
 rbenv gemset create [version] [gemset]
 
-# You can see the existing gemset by using the following command:
+# You can list the existing gemsets by using the following command:
 # This should include the most recent gemset you just created.
 rbenv gemset list
 
-# You can delete the gemset with the following command:
-rbenv gemset delete  [version] [gemset]
+# You can delete a gemset with the following command:
+rbenv gemset delete [version] [gemset]
 ```
 
-By default the rbenv-gemset init command will create the primary gemset, which is the project name, and it will initialize the directory under the ``$(rbenv prefix "$RBENV_VERSION")/gemsets/$RBENV_GEMSET``. If you are using the ``bundler`` it should install the gems and the dependencies in above path.
 
-You can modify the content of .rbenv-gemsets so the gems will be installed in the project directory (for example .gems or ./gems)
+
+## Usage (the advanced, "neckbeard" version)
+
+
+In your application directory, create a file named `.rbenv-gemsets`, with the
+names of the gemsets that you want to use on separate lines, or separated
+by whitespace. The first gemset in the list will be the primary gemset, where
+new gems will be installed.
+
+    $ echo -e "my-gemset\nanother-gemset" > .rbenv-gemsets
+
+Now all commands involving gems will use the gemsets that you've specified.
+
+To have gems install into a sub-folder in your project directory for easy removal later (`rm -rf project_dir`!) / editing / testing,
+you can use a project gemset. A project gemset has a '.' ("dot") as the first character:
+
+    $ echo '.gems' > .rbenv-gemsets
+
+Your gems will then get installed in `project/.gems`.
+If you don't want to use a "dot directory" to house your gems but still want to use a project gemset,
+then do something like this instead:
+
+    $ echo './gems' > .rbenv-gemsets
+
+Your gems will then get installed in `project/gems`.
+
+To see your currently active gemsets, try `rbenv gemset active`. If you're wondering about that gemset called `global` at the end, see https://github.com/jf/rbenv-gemset/issues/59#issuecomment-38264174.
+**TL;DR:** if you don't have any actual gemset called `global`, forget about it! `global` will not affect you at all.
+If you just don't like seeing that `global` at the end, you can add a `-global` ("minus gemset") to your `.rbenv-gemsets` file.
+
+The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
+the current directory, as well as in all ancestor directories, so as long as
+there is a `.rbenv-gemsets` file in or above the current directory.
 
 
 **Special environment variable tips and tricks**
