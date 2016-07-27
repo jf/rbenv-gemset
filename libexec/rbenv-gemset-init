@@ -22,7 +22,7 @@ RBENV_VERSION=$(rbenv version-name)
 rbenv gemset create "$RBENV_VERSION" $RBENV_GEMSET
 echo $RBENV_GEMSET > .rbenv-gemsets
 
-echo created and initialized the following gemset for use with $RBENV_VERSION
+echo initialized your project for use with the following gemset:
 echo =====
-echo $RBENV_GEMSET
+echo $RBENV_VERSION / $RBENV_GEMSET
 echo =====

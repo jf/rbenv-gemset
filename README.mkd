@@ -82,6 +82,9 @@ cd my-project
 # NOTE: this will create the gemset under the current ruby version.
 rbenv gemset init
 
+# Alternatively, you can provide `rbenv gemset init` with the name of a gemset:
+rbenv gemset init [gemset]
+
 # To create a gemset under a specific ruby version:
 rbenv gemset create [version] [gemset]
 
