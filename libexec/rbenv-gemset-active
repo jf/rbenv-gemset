@@ -1,6 +1,15 @@
 #!/usr/bin/env bash
 set -e
 
+# activete
+if [ $# -eq 1 ]; then
+  ARG_GEMSETS=$1
+  gemset_file=$(pwd)/.rbenv-gemsets
+  echo $ARG_GEMSETS > $gemset_file 
+  echo "activate $ARG_GEMSETS gemset ($gemset_file)"
+  exit
+fi
+
 gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
 
 if [ -n "$RBENV_GEMSETS" ]; then
