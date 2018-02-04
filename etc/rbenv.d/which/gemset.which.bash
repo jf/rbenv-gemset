@@ -4,18 +4,18 @@ if [[ -z "$rbenv_gemset_lib_loaded" ]]; then
   source "${rbenv_gemset_root}/lib/rbenv-gemset.bash"
 fi
 
-rbenv_gemset_debug "which/gemset.bash STARTING ${@}"
+rbenv_gemset_debug "gemset.which.bash STARTING ${@}"
 
 # Guard against running twice
 if [[ $RBENV_GEMSET_WHICH_ALREADY = yes ]]; then
-  rbenv_gemset_debug "which/gemset.bash already loaded, RETURNING"
+  rbenv_gemset_debug "gemset.which.bash already loaded, RETURNING"
   return 0
 else
   export RBENV_GEMSET_WHICH_ALREADY=yes
 fi
 
 # Now, on to the actual work...
-rbenv_gemset_debug "which/gemset.bash EXECUTING"
+rbenv_gemset_debug "gemset.which.bash EXECUTING"
 
 # Ensure we have `$RBENV_GEMSETS` setup, which we used to get from the output
 # of `rbenv-gemset-active`
@@ -31,7 +31,7 @@ fi
 rbenv_gemset_ensure RBENV_GEMSET_ROOT
 rbenv_gemset_ensure RBENV_GEMSET_DIR
 
-rbenv_gemset_debug "which/gemset.bash LOOP..."
+rbenv_gemset_debug "gemset.which.bash LOOP..."
 
 # Now the original code, which is free of sub-shells
 project_gemset='^\..+'
@@ -56,4 +56,4 @@ for gemset in "$RBENV_GEMSETS"; do
 done
 IFS="$OLDIFS"
 
-rbenv_gemset_debug "which/gemset.bash DONE ${@}"
+rbenv_gemset_debug "gemset.which.bash DONE ${@}"
