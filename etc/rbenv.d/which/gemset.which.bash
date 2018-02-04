@@ -27,26 +27,23 @@ if [[ -z "$RBENV_GEMSETS" ]]; then
   return 0
 fi
 
-# Ensure we have `$RBENV_GEMSET_ROOT` and `$RBENV_GEMSET_DIR` setup
-rbenv_gemset_ensure RBENV_GEMSET_ROOT
-rbenv_gemset_ensure RBENV_GEMSET_DIR
-
 rbenv_gemset_debug "gemset.which.bash LOOP..."
 
 # Now the original code, which is free of sub-shells
-project_gemset='^\..+'
 OLDIFS="$IFS"
 IFS=$' \t\n'
 for gemset in "$RBENV_GEMSETS"; do
   rbenv_gemset_debug "PROCESSING gemset ${gemset}..."
 
-  if [[ $gemset =~ $project_gemset ]]; then
+  if [[ $gemset =~ $RBENV_GEMSET_PROJECT_GEMSET_PATTERN ]]; then
+    rbenv_gemset_ensure RBENV_GEMSET_DIR
     command="${RBENV_GEMSET_DIR}/${gemset}/bin/$RBENV_COMMAND"
     if [ -x "$command" ]; then
       RBENV_COMMAND_PATH="$command"
       break
     fi
   else
+    rbenv_gemset_ensure RBENV_GEMSET_ROOT
     command="${RBENV_GEMSET_ROOT}/${gemset}/bin/$RBENV_COMMAND"
     if [ -x "$command" ]; then
       RBENV_COMMAND_PATH="$command"
