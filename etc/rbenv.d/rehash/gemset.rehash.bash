@@ -1,3 +1,5 @@
+(>&2 echo "START rehash/gemset.bash")
+
 shopt -s nullglob
 
 RBENV_GEMSET_DIR="$(dirname "$(rbenv-gemset file 2>/dev/null)" 2>/dev/null)"
