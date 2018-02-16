@@ -15,6 +15,10 @@ RBENV_GEMSET_PROJECT_GEMSET_PATTERN='^\..+'
 # "Fast Gemset" Utility Functions
 # ============================================================================
 
+
+# Debugging Functions
+# ----------------------------------------------------------------------------
+
 function rbenv_gemset_err() {
   local message="DEBUG $BASHPID [rbenv-gemset] ${@}"
   (>&2 echo "$message")
@@ -48,11 +52,23 @@ function rbenv_gemset_debug_var {
 }
 
 
+# Error Handling Functions
+# ----------------------------------------------------------------------------
+
+# Write a message to STDERR and exit with status `1`, which should kill
+# program. Used when something went really wrong and I want the user to know
+# about it explicitly and immediately.
+# 
+# @param $@ Message to write to STDERR.
+# 
 function rbenv_gemset_fatal() {
   rbenv_gemset_err "FATAL $@"
   exit 1
 }
 
+
+# Variable Management Functions (Loading and Caching Support)
+# ----------------------------------------------------------------------------
 
 # Test if a variable is set.
 function rbenv_gemset_is_set() {
@@ -60,7 +76,7 @@ function rbenv_gemset_is_set() {
   
   rbenv_gemset_debug "TESTING if var \$${var_name} is set..."
   
-  # Test if `$RBENV_GEMSETS` is unset
+  # Test if variable is unset
   # 
   # Adapted from https://stackoverflow.com/a/13864829/1658272
   # 
@@ -75,6 +91,34 @@ function rbenv_gemset_is_set() {
 }
 
 
+# Ensure a variable is set, calling the corresponding "set" function if it
+# isn't and checking that it was set after the call, exiting the entire
+# program with a failure status and message if it wasn't.
+# 
+# For a variable named `<name>`, it's set function **must** be named exactly
+# 
+#     _rbenv_gemset_set_<name>
+# 
+# @example
+#   This will test if `$rbenv_gemset_x` is set, and call
+#   `_rbenv_gemset_set_rbenv_gemset_x` to set it it is unset:
+#   
+#       rbenv_gemset_ensure rbenv_gemset_x
+#   
+#   If we are able to proceed to the next command, then `$rbenv_gemset_x` is
+#   set and we can use it:
+#   
+#       echo "$rbenv_gemset_x"
+# 
+# @param $1
+#   Variable name
+# 
+# @return 0
+#   When the variable was set successfully (value may be '')
+# 
+# @exit 1
+#   When the set function failed to set the variable
+# 
 function rbenv_gemset_ensure() {
   local var_name="$1"
   rbenv_gemset_debug \
