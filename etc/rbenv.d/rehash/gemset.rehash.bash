@@ -1,4 +1,5 @@
-(>&2 echo "START rehash/gemset.bash")
+# NOTE  This hook as **NOT** been "fast optimized" at all... but it hasn't
+#       really been a problem either.
 
 shopt -s nullglob
 
