@@ -53,8 +53,19 @@ for gemset in "$RBENV_GEMSETS"; do
 done
 IFS="$OLDIFS"
 
-rbenv_gemset_ensure rbenv_gemset_gemdir
-GEM_PATH="$GEM_PATH:${rbenv_gemset_gemdir}"
+# Unless `$RBENV_GEMSET_DISABLE_SHARED_GEMS` is set append the normal rbenv
+# gemset directory for the Ruby version to the `$GEM_PATH`, which causes
+# the gems in the gemset to share gems installed normally for the Ruby
+# version.
+# 
+# I added this because normally when I'm using a gemset I want *total
+# isolation*, meaning outside of it should have **any** effect on it - it
+# only uses the Ruby version itself.
+# 
+if [[ -z "$RBENV_GEMSET_DISABLE_SHARED_GEMS" ]]; then
+  rbenv_gemset_ensure rbenv_gemset_gemdir
+  GEM_PATH="$GEM_PATH:${rbenv_gemset_gemdir}"
+fi
 
 if [ -n "$GEM_HOME" ]; then
   export GEM_HOME GEM_PATH PATH
