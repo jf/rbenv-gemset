@@ -11,7 +11,10 @@ if [[ $RBENV_GEMSET_EXEC_ALREADY = yes ]]; then
   rbenv_gemset_debug "gemset.exec.bash already loaded, RETURNING"
   return 0
 else
-  export RBENV_GEMSET_EXEC_ALREADY=yes
+  # NOTE  This should **NOT** be exported - it messes up subprocesses *inside*
+  #       one lock that invoke another (specically, running lock executables 
+  #       inside Ansible tasks hosted by QB)!
+  RBENV_GEMSET_EXEC_ALREADY=yes
 fi
 
 # Now, on to the actual work...
