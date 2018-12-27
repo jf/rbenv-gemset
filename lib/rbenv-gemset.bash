@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Guard against loading twice
 if [[ $rbenv_gemset_lib_loaded = yes ]]; then
   return 0

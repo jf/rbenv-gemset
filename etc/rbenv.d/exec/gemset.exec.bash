@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Source the lib, if it hasn't been already
 if [[ -z "$rbenv_gemset_lib_loaded" ]]; then
   rbenv_gemset_root="$(dirname "${BASH_SOURCE[0]}")/../../../"

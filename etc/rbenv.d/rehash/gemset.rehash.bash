@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # NOTE  This hook as **NOT** been "fast optimized" at all... but it hasn't
 #       really been a problem either.
 
