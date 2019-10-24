@@ -16,6 +16,9 @@ if [ -z "$RBENV_VERSION" ]; then
     rbenv versions
   } >&2
   exit 1
+elif [ "$RBENV_VERSION" = "system" ]; then
+  echo "you can only create gemset for ruby installed by rbenv." >&2
+  exit 1
 fi
 
 rbenv prefix "$RBENV_VERSION" > /dev/null # make sure the provided version exists
