@@ -11,9 +11,9 @@ fi
 
 RBENV_VERSION="$1"
 if [ -z "$RBENV_VERSION" ]; then
-  { echo "you must specify an installed version to associate the gemset with"
+  { echo "you must specify an installed rbenv ruby version to associate the gemset with"
     echo "available versions are:"
-    rbenv versions
+    rbenv versions | grep -v '^  system$'
   } >&2
   exit 1
 fi
