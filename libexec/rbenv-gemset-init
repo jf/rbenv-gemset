@@ -19,6 +19,10 @@ if [ -z "$RBENV_GEMSET" ]; then
 fi
 
 RBENV_VERSION=$(rbenv version-name)
+if [ "$RBENV_VERSION" = "system" ]; then
+  echo "Cannot initialize gemset for use with non-rbenv-managed ruby; please configure an rbenv ruby version" >&2
+  exit 1
+fi
 rbenv gemset create "$RBENV_VERSION" $RBENV_GEMSET
 echo $RBENV_GEMSET > .rbenv-gemsets
 
