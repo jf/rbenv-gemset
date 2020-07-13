@@ -1,3 +1,7 @@
+#!/usr/bin/env bash
+# NOTE  This hook as **NOT** been "fast optimized" at all... but it hasn't
+#       really been a problem either.
+
 shopt -s nullglob
 
 RBENV_GEMSET_DIR="$(dirname "$(rbenv-gemset file 2>/dev/null)" 2>/dev/null)"
