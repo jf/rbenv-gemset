@@ -30,7 +30,13 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
 done
 IFS="$OLDIFS"
 
-GEM_PATH="$GEM_PATH:$("$(rbenv which gem)" env gemdir)"
+# !! NOTE that with your standard rbenv setup, we do *NOT* need to do this; but this helps bulletproof the call to 'gem'
+# !! if we ever attempt to use/call rbenv in a non-standard way
+# !! see https://github.com/jf/rbenv-gemset/issues/94 for our motivation
+BULLETPROOF_EXEC_PATH=$(rbenv-which ruby)
+BULLETPROOF_EXEC_PATH=${BULLETPROOF_EXEC_PATH%/*}
+
+GEM_PATH="$GEM_PATH:$(PATH=$BULLETPROOF_EXEC_PATH:$PATH $BULLETPROOF_EXEC_PATH/gem env gemdir)"
 
 if [ -n "$GEM_HOME" ]; then
   export GEM_HOME GEM_PATH PATH
