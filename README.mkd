@@ -24,7 +24,7 @@ a.k.a. "How To Ask Questions The Smart Way"
 
 * [Installation](#installation)
   * [GitHub](#github)
-  * [Homebrew](#homebrew)
+  * [\*u\*\* Homebrew](#c-homebrew)
   * [Special note for RubyMine users](#special-note-for-rubymine-users)
 * [Usage](#usage)
 * [Usage (the advanced, "neckbeard" version](#usage-the-advanced-neckbeard-version)
@@ -39,16 +39,13 @@ a.k.a. "How To Ask Questions The Smart Way"
 
 ### GitHub
 
-Download and extract the [latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.9 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
+Download and extract the [latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.10 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
     $ git clone https://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
 
-### Homebrew
+### \*\*c\* Homebrew
 
-If you want to use [Homebrew](http://github.com/Homebrew/homebrew) (Mac OS X):
-
-    $ brew update
-    $ brew install rbenv-gemset
+[\*\*\*k Homebrew](https://github.com/jf/rbenv-gemset/issues/93). This maintainer and this project will not bend to external pressure to change license from people who are not involved in the project. Just use git! **It works**, and is perfectly fine.
 
 ### Special note for RubyMine users
 
