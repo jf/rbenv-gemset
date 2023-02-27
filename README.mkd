@@ -127,8 +127,8 @@ If you just don't like seeing that `global` at the end, you can add a `-global` 
 The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
 the current directory, as well as in all ancestor directories, so as long as
 there is a `.rbenv-gemsets` file in or above the current directory. 
-For compatibility with rvm, rbenv will also check for gemsets in a file called `.ruby-gemset` if the `.rbenv-gemsets` file does not exist.
-
+If the `.ruby-gemsets` is not found then rbenv will check for a file 
+named `.ruby-gemset` and use it instead if it exists. 
 
 **Special environment variable tips and tricks**
 
