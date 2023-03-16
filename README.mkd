@@ -125,10 +125,10 @@ To see your currently active gemsets, try `rbenv gemset active`. If you're wonde
 If you just don't like seeing that `global` at the end, you can add a `-global` ("minus gemset") to your `.rbenv-gemsets` file.
 
 The gemset plugin will cause rbenv to search for the `.rbenv-gemsets` file in
-the current directory, as well as in all ancestor directories, so as long as
-there is a `.rbenv-gemsets` file in or above the current directory. 
-If `.ruby-gemsets` is not found then rbenv will check for a file 
-named `.ruby-gemset` and use it instead if it exists. 
+the current directory, as well as in all ancestor directories, until either a
+config file is found or it has gone all the way up to `/`. If, along the way, a
+`.ruby-gemset` file is found instead of `.rbenv-gemsets`, `.ruby-gemset` will be
+used.
 
 **Special environment variable tips and tricks**
 
