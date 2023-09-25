@@ -24,7 +24,7 @@ a.k.a. "How To Ask Questions The Smart Way"
 
 * [Installation](#installation)
   * [GitHub](#github)
-  * [\*u\*\* Homebrew](#c-homebrew)
+  * [Homebrew](#homebrew)
   * [Special note for RubyMine users](#special-note-for-rubymine-users)
 * [Usage](#usage)
 * [Usage (the advanced, "neckbeard" version](#usage-the-advanced-neckbeard-version)
@@ -43,9 +43,11 @@ Download and extract the [latest release](https://github.com/jf/rbenv-gemset/rel
 
     $ git clone https://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
 
-### \*\*c\* Homebrew
+### Homebrew
 
-[\*\*\*k Homebrew](https://github.com/jf/rbenv-gemset/issues/93). This maintainer and this project will not bend to external pressure to change license from people who are not involved in the project. Just use git! **It works**, and is perfectly fine.
+Package managers are great; but relying on a package manager that wants to [tell you what you can and cannot use](https://github.com/Homebrew/homebrew-core/issues/58225#issuecomment-667761517) based on their [quick](https://github.com/Homebrew/homebrew-core/pull/59058) [arbitrary](https://github.com/Homebrew/homebrew-core/pull/59026/files#diff-98228739260b2b0833a49079482e2e74f14e0421399540eddf01d21ed6aac15c) [decisions](https://github.com/Homebrew/homebrew-core/pull/59094#issuecomment-668930808) about whether public domain software is acceptable... (this first came to my attention in ["issue" 93](https://github.com/jf/rbenv-gemset/issues/93)) is NOT acceptable. You should be able to decide for yourself.
+
+[Just use git!](#github) **It works**, and is perfectly fine.
 
 ### Special note for RubyMine users
 
