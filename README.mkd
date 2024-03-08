@@ -41,7 +41,7 @@ a.k.a. "How To Ask Questions The Smart Way"
 
 Download and extract the [latest release](https://github.com/jf/rbenv-gemset/releases/latest) (v0.5.10 now!) or clone rbenv-gemset to your `$HOME/.rbenv/plugins` directory:
 
-    $ git clone https://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
+    git clone https://github.com/jf/rbenv-gemset.git $HOME/.rbenv/plugins/rbenv-gemset
 
 ### Homebrew
 
@@ -105,20 +105,20 @@ names of the gemsets that you want to use on separate lines, or separated
 by whitespace. The first gemset in the list will be the primary gemset, where
 new gems will be installed.
 
-    $ echo -e "my-gemset\nanother-gemset" > .rbenv-gemsets
+    echo -e "my-gemset\nanother-gemset" > .rbenv-gemsets
 
 Now all commands involving gems will use the gemsets that you've specified.
 
 To have gems install into a sub-folder in your project directory for easy removal later (`rm -rf project_dir`!) / editing / testing,
 you can use a project gemset. A project gemset has a '.' ("dot") as the first character:
 
-    $ echo '.gems' > .rbenv-gemsets
+    echo '.gems' > .rbenv-gemsets
 
 Your gems will then get installed in `project/.gems`.
 If you don't want to use a "dot directory" to house your gems but still want to use a project gemset,
 then do something like this instead:
 
-    $ echo './gems' > .rbenv-gemsets
+    echo './gems' > .rbenv-gemsets
 
 Your gems will then get installed in `project/gems`.
 
@@ -137,13 +137,13 @@ used.
 *RBENV_GEMSETS*:
 You can use this environment variable when you want to work with a certain gemset (or gemset list!). For a quick install into a certain gemset, for example:
 
-	$ RBENV_GEMSETS="global" gem install thin
+	RBENV_GEMSETS="global" gem install thin
 
 *RBENV_GEMSET_FILE*:
 You have to know what you're doing, but you can set RBENV_GEMSET_FILE to the absolute path of a gemset file if you want to use another gemset file that isn't in any of your ancestor directories.
 *Note that you have to be using the same version of ruby for this to work as expected!*
 
-	$ RBENV_GEMSET_FILE="$HOME/hplabs/project1/.rbenv-gemsets" rails new newproject
+	RBENV_GEMSET_FILE="$HOME/hplabs/project1/.rbenv-gemsets" rails new newproject
 
 
 
