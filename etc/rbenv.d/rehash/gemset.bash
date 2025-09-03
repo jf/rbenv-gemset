@@ -16,7 +16,5 @@ for gemset in $(rbenv-gemset active 2>/dev/null); do
 done
 IFS="$OLDIFS"
 
-cd "$SHIM_PATH"
 gemset_bin=(${RBENV_ROOT}/versions/*/gemsets/*/bin/* ${RBENV_ROOT}/versions/*/gemsets/.project-gemsets/*/bin/*)
 make_shims "${gemset_bin[@]}"
-cd "$CUR_PATH"
