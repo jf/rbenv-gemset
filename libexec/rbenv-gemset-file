@@ -17,15 +17,11 @@ locate_local_gemsets_file_from() {
 
 RBENV_VERSION_DIR="$(dirname "$(rbenv version-file)")"
 
-if [[ $RBENV_DIR = $RBENV_VERSION_DIR* ]]; then
-  locate_local_gemsets_file_from "$RBENV_DIR"
-  exit 1
-fi
-
-if [ -z "$RBENV_GEMSET_FILE" ]; then
-  locate_local_gemsets_file_from "$PWD"
-  exit 1
-elif [ -e "$RBENV_GEMSET_FILE" ]; then
+# follow rbenv's leading for where to go for config, unless
+# we have an explicit `$RBENV_GEMSET_FILE`!
+if [ -e "$RBENV_GEMSET_FILE" ]; then
   echo "$RBENV_GEMSET_FILE"
   exit
+else
+  locate_local_gemsets_file_from "$RBENV_DIR"
 fi
