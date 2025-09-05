@@ -16,7 +16,12 @@ a per-application basis) which sets of gems should be used.
 a.k.a. "How To Ask Questions The Smart Way"
 
 
-[*Special Note for RubyMine users!*](#special-note-for-rubymine-users)
+[*Special Note for RubyMine users*](#special-note-for-rubymine-users)
+
+
+## Call for Help
+
+*Please consider sponsorship!* I have maintained this project for over a decade now without complaint _(I took over in [July 2013](#history))_... but could do with some support at this juncture in my life. [Thank you](https://github.com/sponsors/jf).
 
 
 

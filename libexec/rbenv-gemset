@@ -32,6 +32,8 @@ if [ "$1" = "version" ] || [ "$1" = "--version" ]; then
   echo "by Jamis Buck <jamis@jamisbuck.org>"
   echo "Currently maintained by Jeffrey 'jf' Lim <jfs.world@gmail.com>"
   echo
+  echo "Please consider sponsorship: https://github.com/sponsors/jf"
+  echo
   echo "http://github.com/jf/rbenv-gemset"
   exit
 fi
