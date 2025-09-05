@@ -6,11 +6,11 @@ RBENV_GEMSET_VERSION="0.5.10"
 # Provide rbenv completions
 if [ "$1" = "--complete" ]; then
   if [ -z "$2" ]; then
-    echo "init"
     echo "active"
     echo "create"
     echo "delete"
     echo "file"
+    echo "init"
     echo "list"
     echo "version"
     exit
@@ -21,9 +21,13 @@ if [ "$1" = "--complete" ]; then
 fi
 
 if [ "$1" = "version" ] || [ "$1" = "--version" ]; then
-  if [ -n "$gemset_completion" ]; then
-    exit
+  [ -n "$gemset_completion" ] && exit
+
+  if cd "${BASH_SOURCE%/*}" 2>/dev/null && git remote -v 2>/dev/null | grep -q rbenv-gemset; then
+    RBENV_GEMSET_VERSION="$(git describe --tags HEAD 2>/dev/null || true)"
+    RBENV_GEMSET_VERSION="${RBENV_GEMSET_VERSION#v}"
   fi
+
   echo "rbenv-gemset ${RBENV_GEMSET_VERSION}"
   echo "by Jamis Buck <jamis@jamisbuck.org>"
   echo "Currently maintained by Jeffrey 'jf' Lim <jfs.world@gmail.com>"
