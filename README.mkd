@@ -50,9 +50,10 @@ Download and extract the [latest release](https://github.com/jf/rbenv-gemset/rel
 
 ### Homebrew
 
-Package managers are great; but relying on a package manager that wants to [tell you what you can and cannot use](https://github.com/Homebrew/homebrew-core/issues/58225#issuecomment-667761517) based on their [quick](https://github.com/Homebrew/homebrew-core/pull/59058) [arbitrary](https://github.com/Homebrew/homebrew-core/pull/59026/files#diff-98228739260b2b0833a49079482e2e74f14e0421399540eddf01d21ed6aac15c) [decisions](https://github.com/Homebrew/homebrew-core/pull/59094#issuecomment-668930808) about whether public domain software is acceptable... (this first came to my attention in ["issue" 93](https://github.com/jf/rbenv-gemset/issues/93)) is NOT acceptable. You should be able to decide for yourself.
+If you want to use [Homebrew](http://github.com/Homebrew/homebrew) (Mac OS X):
 
-[Just use git!](#github) **It works**, and is perfectly fine.
+    $ brew update
+    $ brew install rbenv-gemset
 
 ### Special note for RubyMine users
 
