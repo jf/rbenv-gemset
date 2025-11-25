@@ -50,7 +50,7 @@ Download and extract the [latest release](https://github.com/jf/rbenv-gemset/rel
 
 ### Homebrew
 
-If you want to use [Homebrew](http://github.com/Homebrew/homebrew) (Mac OS X):
+If you want to use [Homebrew](https://github.com/Homebrew/brew) (macOS):
 
     $ brew update
     $ brew install rbenv-gemset
