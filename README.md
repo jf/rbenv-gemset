@@ -1,16 +1,16 @@
-# KISS yet powerful gem / gemset management for rbenv
+# KISS yet powerful gem/set management for curious engineers and Ruby hackers with rbenv
+
+_If you are a **curious engineer** or a **Ruby/gem [hacker][hacker]**, you will find gemsets **especially** helpful; project gemsets make it even more convenient._
+
+(_New with v0.4.0: Project gemsets!_ install gems into a sub-folder in your project directory for easy cleanup later! (or easy customization, or testing))
 
 rbenv-gemset plugs in to the [goodness of rbenv](https://github.com/sstephenson/rbenv/wiki/Why-rbenv%3F),
 and brings you gem management that is at once simple, easy to understand and set up (just one file with the simplest format ever!)
 and then use to do pretty much everything that you really need to with gemsets.
 
-**New with v0.4.0: Project gemsets!** install gems into a sub-folder in your project directory for easy cleanup later! (or easy customization, or testing)
-
-rbenv-gemset is an extension for the [rbenv][rbenv] ruby version manager that
-allows you to use "gemsets", sandboxed collections of gems. This lets you have
-multiple collections of gems installed in different sandboxes, and specify (on
+Gemsets are sandboxed collections of gems. This lets you have
+multiple collections of (possibly customized) gems installed in different sandboxes, and specify (on
 a per-application basis) which sets of gems should be used.
-
 
 **Error reports and Bug reports:** [How to ensure that you get help](http://www.catb.org/~esr/faqs/smart-questions.html#intro),
 a.k.a. "How To Ask Questions The Smart Way"
@@ -163,15 +163,16 @@ See http://www.catb.org/~esr/faqs/smart-questions.html#intro.
 ## History
 
 
-Jamis Buck started the project in 2011, and Joe Fiorini took over as maintainer in May 2012. Jeffrey 'jf' Lim is now the current maintainer, and took over in July 2013.
+Jamis Buck started the project in 2011, and Joe Fiorini took over as maintainer in May 2012. Jeffrey 'jf' Lim subsequently took over in July 2013, and has been maintaining it ever since.
 
 
 
 ## License
 
 
-This code is placed in the public domain by the author, Jamis Buck. Use it as
-you wish. Please prefer good over evil.
+The project was placed in the public domain by the original author, Jamis Buck; and continues to be done so by the maintainer.
+Use it as you wish. Please prefer good over evil.
 
 
 [rbenv]: http://github.com/sstephenson/rbenv
+[hacker]: http://www.catb.org/jargon/html/H/hacker.html
