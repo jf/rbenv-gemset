@@ -1,12 +1,12 @@
 #!/usr/bin/env bash
 set -e
 
-gemset_file="$(rbenv-gemset-file 2>/dev/null || true)"
+[[ -n $RBENV_GEMSETS ]] && echo $RBENV_GEMSETS && exit
 
-if [ -n "$RBENV_GEMSETS" ]; then
-  echo $RBENV_GEMSETS
-elif [ -n "$gemset_file" ]; then
-  RBENV_GEMSETS=$(cat "$gemset_file")
+_rbenv_gemsets_file=${_rbenv_gemsets_file-$( rbenv-gemset-file 2>/dev/null || true )}
+
+if [[ -n $_rbenv_gemsets_file ]]; then
+  RBENV_GEMSETS=$(cat "$_rbenv_gemsets_file")
   if echo $RBENV_GEMSETS | grep -E '(^| )-global( |$)' >/dev/null 2>&1; then
     RBENV_GEMSETS=$(echo $RBENV_GEMSETS | sed -E 's/ /  /g;s/(^| )-?global( |$)//g')
   elif echo $RBENV_GEMSETS | grep -vE '(^| )global( |$)' >/dev/null 2>&1; then
@@ -17,5 +17,3 @@ else
   echo "no active gemsets" >&2
   exit 1
 fi
-
-
