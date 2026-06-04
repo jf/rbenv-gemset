@@ -1,5 +1,5 @@
-[[ $RBENV_GEMSET_ALREADY = yes ]] && return
-RBENV_GEMSET_ALREADY=yes
+[[ $RBENV_GEMSET_ALREADY = "yes" ]] && return
+export RBENV_GEMSET_ALREADY=yes
 
 unset GEM_HOME GEM_PATH
 
