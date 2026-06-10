@@ -40,7 +40,11 @@ IFS="$OLDIFS"
 
 # append rbenv Ruby gemdir to GEM_PATH;
 # invocation tested to work for: CRuby, JRuby, and TruffleRuby. Likely for Rubinius too (anybody still on this?)
-# NOTE: special PATH invocation for "gem env gemdir" is needed for JRuby (#94 was a foreshadowing)!
+# NOTE:
+# - special PATH invocation for "gem env gemdir" is needed for manually-installed JRuby, which the `ruby-build` fix (see below) does not address
+# - "endless loop" issue first fixed in
+#   `rbenv-gemset` https://github.com/jf/rbenv-gemset/issues/56#event-81796350, and then subsequently in
+#   `ruby-build` https://github.com/rbenv/ruby-build/issues/471#event-82868076
 GEM_PATH="$GEM_PATH:$(PATH="$_rbenv_prefix/bin:$PATH" $_rbenv_prefix/bin/gem env gemdir)"
 
 if [ -n "$GEM_HOME" ]; then
